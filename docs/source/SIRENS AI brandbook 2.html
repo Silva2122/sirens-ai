@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIRENS.AI · Брендбук</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Syne:wght@400;500;600;700;800&family=Syne+Mono&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:     #08080A;
+  --paper:   #F5F2EC;
+  --cream:   #EDE9E0;
+  --signal:  #FF3C2E;
+  --signal2: #FF6B35;
+  --wave:    #0A2463;
+  --wave2:   #1B4FD8;
+  --gold:    #C9A84C;
+  --mist:    #9B9EA6;
+  --fog:     #D4D1CA;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--ink);
+  color: var(--paper);
+  overflow-x: hidden;
+}
+
+/* ─── COVER ─────────────────────────────────────────────── */
+.cover {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  background: var(--ink);
+}
+
+.cover-waves {
+  position: absolute; inset: 0;
+  opacity: 0.18;
+}
+.cover-waves svg { width: 100%; height: 100%; }
+
+.cover-center {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 80px 40px;
+  position: relative; z-index: 2;
+  text-align: center;
+}
+
+/* ─── LOGO MARK ─────────────────────────────────────────── */
+.logo-mark {
+  position: relative;
+  margin-bottom: 48px;
+}
+.logo-svg { width: 120px; height: 120px; }
+
+.wordmark {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 88px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--paper);
+  position: relative;
+}
+.wordmark .dot-ai {
+  font-family: 'Syne Mono', monospace;
+  font-size: 32px;
+  color: var(--signal);
+  vertical-align: super;
+  letter-spacing: 0;
+  margin-left: 4px;
+  font-weight: 400;
+}
+.wordmark .dot {
+  color: var(--signal);
+  font-weight: 800;
+}
+
+.cover-tagline {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-size: 20px;
+  color: var(--mist);
+  margin-top: 20px;
+  letter-spacing: 0.04em;
+}
+
+.cover-meta {
+  display: flex; gap: 40px;
+  justify-content: center;
+  padding: 28px 40px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  position: relative; z-index: 2;
+}
+.cover-meta-item {
+  font-family: 'Syne Mono';
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── SECTIONS ──────────────────────────────────────────── */
+.section {
+  min-height: 100vh;
+  padding: 100px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.s-label {
+  font-family: 'Syne Mono';
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.s-label::after {
+  content: '';
+  flex: 1; max-width: 60px;
+  height: 1px; background: rgba(255,255,255,0.1);
+}
+
+.s-title {
+  font-family: 'Playfair Display';
+  font-weight: 900;
+  font-size: 56px;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 60px;
+}
+
+/* ─── SECTION 1: MEANING ────────────────────────────────── */
+.meaning-section {
+  background: var(--ink);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding: 0;
+}
+.meaning-left {
+  padding: 100px 80px;
+  border-right: 1px solid rgba(255,255,255,0.05);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.meaning-right {
+  padding: 100px 80px;
+  background: #0D0D0F;
+  display: flex; flex-direction: column; justify-content: center;
+}
+
+.meaning-num {
+  font-family: 'Playfair Display';
+  font-size: 160px;
+  font-weight: 900;
+  line-height: 0.8;
+  color: rgba(255,255,255,0.03);
+  position: absolute;
+  top: 60px; right: -20px;
+  letter-spacing: -0.06em;
+}
+
+.meaning-item {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.meaning-item:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+
+.meaning-tag {
+  font-family: 'Syne Mono';
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 10px;
+}
+.meaning-head {
+  font-family: 'Syne';
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--paper);
+}
+.meaning-body {
+  font-size: 15px;
+  color: rgba(255,255,255,0.45);
+  line-height: 1.8;
+}
+
+/* ─── SECTION 2: LOGO ───────────────────────────────────── */
+.logo-section { background: var(--paper); color: var(--ink); }
+.logo-section .s-label { color: var(--mist); }
+.logo-section .s-label::after { background: rgba(0,0,0,0.1); }
+.logo-section .s-title { color: var(--ink); }
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 2px;
+}
+
+.logo-box {
+  padding: 60px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 280px; position: relative;
+}
+.logo-box-label {
+  position: absolute; bottom: 20px; left: 24px;
+  font-family: 'Syne Mono'; font-size: 9px;
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+
+.lb-dark { background: var(--ink); }
+.lb-dark .logo-box-label { color: rgba(255,255,255,0.2); }
+
+.lb-light { background: var(--cream); }
+.lb-light .logo-box-label { color: rgba(0,0,0,0.25); }
+
+.lb-signal { background: var(--signal); }
+.lb-signal .logo-box-label { color: rgba(255,255,255,0.5); }
+
+.lb-wave { background: var(--wave); }
+.lb-wave .logo-box-label { color: rgba(255,255,255,0.3); }
+
+/* Logo variations */
+.logo-var {
+  font-family: 'Syne';
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  text-align: center;
+}
+.logo-var.size-lg { font-size: 64px; }
+.logo-var.size-md { font-size: 48px; }
+.logo-var.lv-paper { color: var(--paper); }
+.logo-var.lv-ink { color: var(--ink); }
+.logo-var.lv-white { color: white; }
+.logo-var .ai-tag {
+  font-family: 'Syne Mono';
+  font-size: 0.38em;
+  font-weight: 400;
+  vertical-align: super;
+  margin-left: 2px;
+}
+.lv-paper .ai-tag { color: var(--signal); }
+.lv-ink .ai-tag { color: var(--signal); }
+.lv-white .ai-tag { color: rgba(255,255,255,0.6); }
+
+/* Logomark only */
+.mark-only {
+  display: flex; align-items: center; justify-content: center;
+}
+
+/* Don'ts */
+.donts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  margin-top: 40px;
+}
+.dont-box {
+  background: var(--cream);
+  padding: 40px 24px;
+  text-align: center;
+  position: relative;
+}
+.dont-box::after {
+  content: '✕';
+  position: absolute;
+  top: 12px; right: 12px;
+  font-size: 14px; color: var(--signal);
+  font-family: 'Syne'; font-weight: 700;
+}
+.dont-label {
+  font-family: 'Syne Mono';
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.35);
+  margin-top: 16px;
+}
+
+/* ─── SECTION 3: COLORS ─────────────────────────────────── */
+.colors-section { background: var(--ink); }
+
+.palette-hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  height: 320px;
+  gap: 2px;
+  margin-bottom: 48px;
+}
+.swatch {
+  position: relative;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  overflow: hidden;
+  cursor: default;
+  transition: flex 0.4s ease;
+}
+.swatch:hover { flex: 1.5; }
+
+.sw-ink    { background: #08080A; border: 1px solid #1A1A1A; }
+.sw-paper  { background: #F5F2EC; }
+.sw-signal { background: linear-gradient(160deg, #FF3C2E, #FF6B35); }
+.sw-wave   { background: linear-gradient(160deg, #0A2463, #1B4FD8); }
+.sw-gold   { background: linear-gradient(160deg, #C9A84C, #E8C97A); }
+.sw-mist   { background: #9B9EA6; }
+
+.sw-name {
+  font-family: 'Syne'; font-size: 13px; font-weight: 700;
+  margin-bottom: 4px;
+}
+.sw-hex {
+  font-family: 'Syne Mono'; font-size: 10px;
+  opacity: 0.6; letter-spacing: 0.06em;
+}
+.sw-role {
+  position: absolute; top: 16px; left: 16px;
+  font-family: 'Syne Mono'; font-size: 9px;
+  letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.45;
+}
+
+.sw-ink .sw-name,
+.sw-ink .sw-hex,
+.sw-ink .sw-role { color: var(--paper); }
+.sw-signal .sw-name,
+.sw-signal .sw-hex,
+.sw-signal .sw-role { color: #fff; }
+.sw-wave .sw-name,
+.sw-wave .sw-hex,
+.sw-wave .sw-role { color: #fff; }
+.sw-gold .sw-name,
+.sw-gold .sw-hex { color: var(--ink); }
+.sw-gold .sw-role { color: var(--ink); }
+.sw-paper .sw-name,
+.sw-paper .sw-hex,
+.sw-paper .sw-role { color: var(--ink); }
+.sw-mist .sw-name,
+.sw-mist .sw-hex { color: #fff; }
+.sw-mist .sw-role { color: #fff; }
+
+.color-usage {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+  margin-top: 2px;
+}
+.cu-item {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 28px;
+}
+.cu-swatch {
+  width: 40px; height: 4px; margin-bottom: 16px; border-radius: 2px;
+}
+.cu-name {
+  font-family: 'Syne'; font-size: 13px; font-weight: 600;
+  color: var(--paper); margin-bottom: 8px;
+}
+.cu-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; }
+
+/* ─── SECTION 4: TYPOGRAPHY ─────────────────────────────── */
+.type-section { background: #0D0D0F; padding: 100px 80px; }
+
+.type-specimen {
+  margin-bottom: 64px;
+  padding-bottom: 64px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.type-specimen:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+
+.type-meta {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 24px;
+}
+.type-meta-left .t-family {
+  font-family: 'Syne Mono';
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--signal);
+  margin-bottom: 6px;
+}
+.type-meta-left .t-role {
+  font-family: 'Syne';
+  font-size: 14px; font-weight: 600;
+  color: var(--paper);
+}
+.type-meta-right {
+  font-family: 'Syne Mono';
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  text-align: right;
+  line-height: 1.8;
+}
+
+.type-display {
+  font-family: 'Syne';
+  font-weight: 800;
+  font-size: 80px;
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--paper);
+}
+.type-serif {
+  font-family: 'Playfair Display';
+  font-size: 64px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--paper);
+}
+.type-mono {
+  font-family: 'Syne Mono';
+  font-size: 32px;
+  letter-spacing: -0.01em;
+  color: var(--signal);
+  line-height: 1.4;
+}
+.type-body-sample {
+  font-size: 17px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.5);
+  max-width: 640px;
+}
+.type-body-sample strong { color: var(--paper); font-weight: 500; }
+
+/* ─── SECTION 5: VOICE ──────────────────────────────────── */
+.voice-section {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 100px 80px;
+}
+.voice-section .s-title { color: var(--ink); }
+.voice-section .s-label { color: var(--mist); }
+.voice-section .s-label::after { background: rgba(0,0,0,0.1); }
+
+.voice-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+}
+.voice-card {
+  background: var(--cream);
+  padding: 48px;
+  border: 1px solid var(--fog);
+}
+.voice-card-head {
+  display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+}
+.voice-icon { font-size: 24px; }
+.voice-card-title {
+  font-family: 'Syne'; font-size: 15px; font-weight: 700;
+  color: var(--ink);
+}
+.voice-compare {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.vc-bad {
+  padding: 16px; background: rgba(255,60,46,0.06);
+  border-left: 2px solid rgba(255,60,46,0.2);
+}
+.vc-good {
+  padding: 16px; background: rgba(10,36,99,0.06);
+  border-left: 2px solid rgba(10,36,99,0.3);
+}
+.vc-label {
+  font-family: 'Syne Mono'; font-size: 9px;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.vc-bad .vc-label { color: var(--signal); }
+.vc-good .vc-label { color: var(--wave2); }
+.vc-text { font-size: 14px; color: rgba(0,0,0,0.55); line-height: 1.6; font-style: italic; }
+
+.principles {
+  margin-top: 2px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px;
+}
+.principle-card {
+  background: var(--ink); color: var(--paper);
+  padding: 40px 32px;
+}
+.p-num {
+  font-family: 'Playfair Display'; font-size: 48px; font-weight: 900;
+  color: rgba(255,255,255,0.06); line-height: 1;
+  margin-bottom: 16px;
+}
+.p-title {
+  font-family: 'Syne'; font-size: 16px; font-weight: 700;
+  color: var(--paper); margin-bottom: 8px;
+}
+.p-desc { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; }
+
+/* ─── SECTION 6: APPLICATIONS ───────────────────────────── */
+.app-section { background: var(--ink); padding: 100px 80px; }
+
+.mockup-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  margin-bottom: 2px;
+}
+.mockup-wide { grid-column: 1 / -1; }
+
+.mockup {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.05);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Business card mockup */
+.bcard {
+  background: var(--ink);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 40px 48px;
+  min-height: 220px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.bcard::before {
+  content: '';
+  position: absolute; right: -60px; top: -60px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,60,46,0.08);
+}
+.bcard-logo {
+  font-family: 'Syne'; font-weight: 800; font-size: 28px;
+  letter-spacing: -0.04em; color: var(--paper);
+}
+.bcard-logo .ai-sm {
+  font-family: 'Syne Mono'; font-size: 12px;
+  color: var(--signal); vertical-align: super;
+}
+.bcard-name {
+  font-family: 'Syne'; font-size: 15px; font-weight: 600;
+  color: var(--paper); margin-bottom: 4px;
+}
+.bcard-role {
+  font-family: 'DM Sans'; font-size: 12px;
+  font-style: italic; color: var(--mist);
+  margin-bottom: 12px;
+}
+.bcard-contact {
+  font-family: 'Syne Mono'; font-size: 9px;
+  letter-spacing: 0.08em; color: rgba(255,255,255,0.2);
+  line-height: 1.8;
+}
+
+/* Email signature */
+.esig {
+  background: white;
+  padding: 32px 40px;
+  display: flex; gap: 24px; align-items: flex-start;
+}
+.esig-divider {
+  width: 2px; background: var(--signal);
+  align-self: stretch; min-height: 60px;
+}
+.esig-logo-sm {
+  font-family: 'Syne'; font-weight: 800; font-size: 20px;
+  letter-spacing: -0.04em; color: var(--ink); margin-bottom: 4px;
+}
+.esig-logo-sm .ai-r { font-family: 'Syne Mono'; font-size: 9px; color: var(--signal); vertical-align: super; }
+.esig-name { font-family: 'Syne'; font-size: 14px; font-weight: 700; color: var(--ink); }
+.esig-role { font-size: 12px; color: var(--mist); margin-bottom: 8px; font-style: italic; }
+.esig-contacts { font-family: 'Syne Mono'; font-size: 10px; color: rgba(0,0,0,0.3); line-height: 1.8; }
+
+/* Presentation cover */
+.pres-cover {
+  background: var(--wave);
+  padding: 60px;
+  min-height: 320px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden;
+}
+.pres-cover::before {
+  content: 'SIRENS';
+  position: absolute;
+  font-family: 'Syne'; font-weight: 800; font-size: 200px;
+  letter-spacing: -0.06em; line-height: 0.8;
+  color: rgba(255,255,255,0.04);
+  right: -40px; bottom: -20px;
+}
+.pres-logo {
+  font-family: 'Syne'; font-weight: 800; font-size: 22px;
+  letter-spacing: -0.03em; color: rgba(255,255,255,0.4);
+}
+.pres-logo .ai-p { font-family: 'Syne Mono'; font-size: 10px; color: var(--signal); vertical-align: super; }
+.pres-title {
+  font-family: 'Playfair Display'; font-size: 42px; font-weight: 700;
+  font-style: italic; color: #fff; line-height: 1.2; max-width: 420px;
+}
+.pres-meta { font-family: 'Syne Mono'; font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; }
+
+/* App icon concept */
+.app-icon-row {
+  display: flex; gap: 24px; align-items: center;
+  padding: 48px;
+}
+.app-icon {
+  width: 88px; height: 88px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; border-radius: 20px;
+  flex-shrink: 0;
+}
+.ai-dark { background: var(--ink); border: 1px solid rgba(255,255,255,0.08); }
+.ai-signal { background: linear-gradient(135deg, #FF3C2E, #FF6B35); }
+.ai-wave { background: linear-gradient(135deg, #0A2463, #1B4FD8); }
+.icon-letter {
+  font-family: 'Syne'; font-weight: 800; font-size: 36px;
+  letter-spacing: -0.04em; color: var(--paper);
+}
+.icon-letter .dot-s { color: var(--signal); font-size: 12px; vertical-align: super; }
+.ai-signal .icon-letter { color: white; }
+.ai-signal .icon-letter .dot-s { color: rgba(255,255,255,0.5); }
+.ai-wave .icon-letter { color: white; }
+
+.icon-desc { font-size: 14px; color: rgba(255,255,255,0.35); line-height: 1.7; }
+.icon-desc strong { color: var(--paper); }
+
+/* ─── CLOSER ────────────────────────────────────────────── */
+.closer {
+  min-height: 60vh;
+  background: var(--ink);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 80px 40px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  position: relative; overflow: hidden;
+}
+.closer::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 100%,
+    rgba(255,60,46,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.closer-logo {
+  font-family: 'Syne'; font-weight: 800; font-size: 72px;
+  letter-spacing: -0.05em; color: var(--paper);
+  position: relative; z-index: 1;
+}
+.closer-logo .ai-c {
+  font-family: 'Syne Mono'; font-size: 28px;
+  color: var(--signal); vertical-align: super;
+}
+.closer-tagline {
+  font-family: 'Playfair Display'; font-style: italic; font-size: 22px;
+  color: rgba(255,255,255,0.25); margin-top: 16px; margin-bottom: 60px;
+  position: relative; z-index: 1;
+}
+.closer-meta {
+  font-family: 'Syne Mono'; font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: rgba(255,255,255,0.1);
+  position: relative; z-index: 1; line-height: 2;
+}
+
+/* ─── SCROLL ANIM ───────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- ══ COVER ══════════════════════════════════════════════ -->
+<section class="cover">
+  <!-- Animated wave lines -->
+  <svg class="cover-waves" viewBox="0 0 1400 900" preserveAspectRatio="xMidYMid slice">
+    <defs>
+      <linearGradient id="wg" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#FF3C2E;stop-opacity:0"/>
+        <stop offset="50%" style="stop-color:#FF3C2E;stop-opacity:1"/>
+        <stop offset="100%" style="stop-color:#1B4FD8;stop-opacity:0"/>
+      </linearGradient>
+    </defs>
+    <g stroke="url(#wg)" fill="none" stroke-width="0.8">
+      <path d="M0,200 Q350,120 700,200 T1400,200" opacity="0.6">
+        <animate attributeName="d" dur="8s" repeatCount="indefinite"
+          values="M0,200 Q350,120 700,200 T1400,200;
+                  M0,200 Q350,280 700,200 T1400,200;
+                  M0,200 Q350,120 700,200 T1400,200"/>
+      </path>
+      <path d="M0,300 Q350,220 700,300 T1400,300" opacity="0.4">
+        <animate attributeName="d" dur="10s" repeatCount="indefinite"
+          values="M0,300 Q350,220 700,300 T1400,300;
+                  M0,300 Q350,380 700,300 T1400,300;
+                  M0,300 Q350,220 700,300 T1400,300"/>
+      </path>
+      <path d="M0,450 Q350,370 700,450 T1400,450" opacity="0.3">
+        <animate attributeName="d" dur="12s" repeatCount="indefinite"
+          values="M0,450 Q350,370 700,450 T1400,450;
+                  M0,450 Q350,530 700,450 T1400,450;
+                  M0,450 Q350,370 700,450 T1400,450"/>
+      </path>
+      <path d="M0,580 Q350,500 700,580 T1400,580" opacity="0.2">
+        <animate attributeName="d" dur="9s" repeatCount="indefinite"
+          values="M0,580 Q350,500 700,580 T1400,580;
+                  M0,580 Q350,660 700,580 T1400,580;
+                  M0,580 Q350,500 700,580 T1400,580"/>
+      </path>
+      <path d="M0,700 Q350,620 700,700 T1400,700" opacity="0.15">
+        <animate attributeName="d" dur="14s" repeatCount="indefinite"
+          values="M0,700 Q350,620 700,700 T1400,700;
+                  M0,700 Q350,780 700,700 T1400,700;
+                  M0,700 Q350,620 700,700 T1400,700"/>
+      </path>
+    </g>
+    <!-- Signal dot -->
+    <circle cx="700" cy="450" r="2" fill="#FF3C2E" opacity="0.6">
+      <animate attributeName="r" dur="3s" repeatCount="indefinite" values="2;6;2"/>
+      <animate attributeName="opacity" dur="3s" repeatCount="indefinite" values="0.6;0.1;0.6"/>
+    </circle>
+  </svg>
+
+  <div class="cover-center">
+    <div class="wordmark">
+      SIRENS<span class="dot">.</span><span class="dot-ai">AI</span>
+    </div>
+    <div class="cover-tagline">Голос безопасности нового времени</div>
+    <div style="margin-top:48px;width:48px;height:1px;background:rgba(255,255,255,0.1)"></div>
+    <div style="margin-top:24px;font-family:'Syne Mono';font-size:10px;letter-spacing:0.18em;color:rgba(255,255,255,0.15);text-transform:uppercase">
+      Брендбук · Версия 1.0 · 2025
+    </div>
+  </div>
+
+  <div class="cover-meta">
+    <div class="cover-meta-item">IT Safety Solutions</div>
+    <div class="cover-meta-item">·</div>
+    <div class="cover-meta-item">Охрана труда × Искусственный интеллект</div>
+    <div class="cover-meta-item">·</div>
+    <div class="cover-meta-item">Основано 2025</div>
+  </div>
+</section>
+
+<!-- ══ MEANING ════════════════════════════════════════════ -->
+<div class="meaning-section reveal">
+  <div class="meaning-left" style="position:relative">
+    <div class="meaning-num">01</div>
+    <div class="s-label">Смысл названия</div>
+    <h2 style="font-family:'Playfair Display';font-size:48px;font-weight:900;line-height:1;margin-bottom:48px;letter-spacing:-0.02em">
+      Три слоя<br><em style="color:var(--signal)">одного слова</em>
+    </h2>
+    <div class="meaning-item">
+      <div class="meaning-tag">Слой 01 · Мифология</div>
+      <div class="meaning-head">Сирены — предвестники опасности</div>
+      <div class="meaning-body">В греческой мифологии сирены — существа, чей голос невозможно не услышать. Они звучат раньше, чем наступает беда. Точная метафора для системы раннего предупреждения рисков на производстве.</div>
+    </div>
+    <div class="meaning-item">
+      <div class="meaning-tag">Слой 02 · Профессия</div>
+      <div class="meaning-head">Сирена — сигнал тревоги в ОТ</div>
+      <div class="meaning-body">Сирена на производстве — это звук, который означает «стоп, опасность». Название работает буквально в контексте охраны труда. Клиент слышит его — и сразу понимает, о чём компания.</div>
+    </div>
+    <div class="meaning-item" style="border:none;padding-bottom:0;margin-bottom:0">
+      <div class="meaning-tag">Слой 03 · Женский код</div>
+      <div class="meaning-head">Сирены — женские персонажи</div>
+      <div class="meaning-body">Мифологические сирены — женщины. Намёк на двух основательниц без деклараций и феминистских манифестов. Знающие — улыбнутся. Остальные просто запомнят сильное название.</div>
+    </div>
+  </div>
+  <div class="meaning-right">
+    <div class="s-label">AI в названии</div>
+    <h3 style="font-family:'Syne';font-size:32px;font-weight:800;margin-bottom:32px;letter-spacing:-0.02em">
+      Почему .AI<br>а не просто Sirens
+    </h3>
+    <div style="font-size:15px;color:rgba(255,255,255,0.4);line-height:1.9;margin-bottom:40px">
+      Точка создаёт паузу — визуальную и смысловую.<br>
+      <strong style="color:rgba(255,255,255,0.7)">SIRENS</strong> — архетип, история, эмоция.<br>
+      <strong style="color:var(--signal)">.AI</strong> — технология, будущее, точность.<br><br>
+      Вместе это читается как заявление:<br>
+      <em style="color:rgba(255,255,255,0.6)">«Древняя мудрость + современный интеллект».</em>
+    </div>
+
+    <!-- AI wordmark breakdown -->
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);padding:32px;margin-bottom:32px">
+      <div style="font-family:'Syne Mono';font-size:9px;letter-spacing:0.15em;color:rgba(255,255,255,0.2);text-transform:uppercase;margin-bottom:20px">Анатомия логотипа</div>
+      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:24px">
+        <span style="font-family:'Syne';font-weight:800;font-size:52px;letter-spacing:-0.04em;color:var(--paper)">SIRENS</span>
+        <span style="font-family:'Syne';font-weight:800;font-size:52px;color:var(--signal)">.</span>
+        <span style="font-family:'Syne Mono';font-size:22px;color:var(--signal);margin-bottom:4px">AI</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px">
+        <div>
+          <div style="height:2px;background:var(--paper);margin-bottom:8px"></div>
+          <div style="font-family:'Syne Mono';font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.1em">Syne 800<br>Основное слово</div>
+        </div>
+        <div>
+          <div style="height:2px;background:var(--signal);margin-bottom:8px"></div>
+          <div style="font-family:'Syne Mono';font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.1em">Syne 800<br>Разделитель</div>
+        </div>
+        <div>
+          <div style="height:2px;background:var(--signal);margin-bottom:8px"></div>
+          <div style="font-family:'Syne Mono';font-size:9px;color:rgba(255,255,255,0.3);letter-spacing:0.1em">Syne Mono 400<br>ИИ-маркер</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tagline options -->
+    <div style="font-family:'Syne Mono';font-size:9px;letter-spacing:0.15em;color:rgba(255,255,255,0.2);text-transform:uppercase;margin-bottom:16px">Слоганы</div>
+    <div style="display:grid;gap:10px">
+      <div style="padding:14px 18px;border-left:2px solid var(--signal);background:rgba(255,60,46,0.04)">
+        <div style="font-family:'Playfair Display';font-style:italic;font-size:16px;color:var(--paper)">«Голос безопасности нового времени»</div>
+        <div style="font-family:'Syne Mono';font-size:9px;color:rgba(255,255,255,0.2);margin-top:4px">Основной · русский</div>
+      </div>
+      <div style="padding:14px 18px;border-left:2px solid rgba(255,255,255,0.1)">
+        <div style="font-family:'Playfair Display';font-style:italic;font-size:16px;color:rgba(255,255,255,0.5)">«Safety signals. Human intelligence.»</div>
+        <div style="font-family:'Syne Mono';font-size:9px;color:rgba(255,255,255,0.2);margin-top:4px">Международный · английский</div>
+      </div>
+      <div style="padding:14px 18px;border-left:2px solid rgba(255,255,255,0.1)">
+        <div style="font-family:'Playfair Display';font-style:italic;font-size:16px;color:rgba(255,255,255,0.5)">«Слышим риски раньше, чем они случаются»</div>
+        <div style="font-family:'Syne Mono';font-size:9px;color:rgba(255,255,255,0.2);margin-top:4px">Продуктовый</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ LOGO ════════════════════════════════════════════════ -->
+<section class="section logo-section reveal">
+  <div class="s-label">02</div>
+  <h2 class="s-title">Логотип<br>и знак</h2>
+
+  <div class="logo-grid">
+    <div class="logo-box lb-dark" style="grid-column:1">
+      <div class="logo-var size-lg lv-paper">
+        SIRENS<span style="color:var(--signal)">.</span><span class="ai-tag" style="color:var(--signal);font-family:'Syne Mono';font-size:0.38em">AI</span>
+      </div>
+      <div class="logo-box-label">Основной · тёмный фон</div>
+    </div>
+    <div class="logo-box lb-light" style="grid-column:2">
+      <div class="logo-var size-lg lv-ink">
+        SIRENS<span style="color:var(--signal)">.</span><span class="ai-tag" style="color:var(--signal);font-family:'Syne Mono';font-size:0.38em">AI</span>
+      </div>
+      <div class="logo-box-label" style="color:rgba(0,0,0,0.25)">Основной · светлый фон</div>
+    </div>
+    <div class="logo-box lb-signal">
+      <div class="logo-var size-md lv-white">
+        SIRENS<span style="color:rgba(255,255,255,0.5)">.</span><span class="ai-tag" style="color:rgba(255,255,255,0.6);font-family:'Syne Mono';font-size:0.38em">AI</span>
+      </div>
+      <div class="logo-box-label">На акцентном · сигнальный</div>
+    </div>
+    <div class="logo-box lb-wave">
+      <div class="logo-var size-md lv-white">
+        SIRENS<span style="color:rgba(255,255,255,0.4)">.</span><span class="ai-tag" style="color:rgba(255,255,255,0.5);font-family:'Syne Mono';font-size:0.38em">AI</span>
+      </div>
+      <div class="logo-box-label">На акцентном · волна</div>
+    </div>
+  </div>
+
+  <!-- Don'ts -->
+  <div style="margin-top:48px">
+    <div class="s-label" style="color:var(--signal)">Нельзя</div>
+    <div class="donts-grid">
+      <div class="dont-box">
+        <div style="font-family:'Arial';font-size:28px;font-weight:bold;color:var(--ink)">SIRENS.AI</div>
+        <div class="dont-label">Другой шрифт</div>
+      </div>
+      <div class="dont-box">
+        <div style="font-family:'Syne';font-weight:800;font-size:28px;letter-spacing:-0.04em;color:#888">SIRENS.AI</div>
+        <div class="dont-label">Серый цвет</div>
+      </div>
+      <div class="dont-box">
+        <div style="font-family:'Syne';font-weight:800;font-size:28px;letter-spacing:-0.04em;color:var(--ink);text-shadow:2px 2px 4px rgba(0,0,0,0.3)">SIRENS.AI</div>
+        <div class="dont-label">Тень на логотипе</div>
+      </div>
+      <div class="dont-box">
+        <div style="font-family:'Syne';font-weight:800;font-size:22px;letter-spacing:-0.04em;color:var(--ink);transform:skew(-10deg);display:inline-block">SIRENS.AI</div>
+        <div class="dont-label">Искажение</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimum size -->
+  <div style="margin-top:48px;padding:32px;background:var(--cream);display:flex;align-items:center;gap:40px;flex-wrap:wrap">
+    <div>
+      <div style="font-family:'Syne Mono';font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);margin-bottom:12px">Минимальный размер</div>
+      <div style="display:flex;align-items:center;gap:24px">
+        <div>
+          <div style="font-family:'Syne';font-weight:800;font-size:36px;letter-spacing:-0.04em;color:var(--ink)">SIRENS<span style="color:var(--signal)">.</span><span style="font-family:'Syne Mono';font-size:15px;color:var(--signal);vertical-align:super">AI</span></div>
+          <div style="font-family:'Syne Mono';font-size:9px;color:var(--mist)">печать · мин. 120px</div>
+        </div>
+        <div>
+          <div style="font-family:'Syne';font-weight:800;font-size:20px;letter-spacing:-0.04em;color:var(--ink)">SIRENS<span style="color:var(--signal)">.</span><span style="font-family:'Syne Mono';font-size:9px;color:var(--signal);vertical-align:super">AI</span></div>
+          <div style="font-family:'Syne Mono';font-size:9px;color:var(--mist)">веб · мин. 64px</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1;min-width:200px">
+      <div style="font-family:'Syne Mono';font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--mist);margin-bottom:12px">Охранное поле</div>
+      <div style="font-size:13px;color:rgba(0,0,0,0.45);line-height:1.7">Минимальный отступ вокруг логотипа равен высоте буквы «S» в wordmark. Не размещать поверх сложных изображений без подложки.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ COLORS ══════════════════════════════════════════════ -->
+<section class="section colors-section reveal" style="padding-bottom:0">
+  <div class="s-label">03</div>
+  <h2 class="s-title">Цветовая<br>система</h2>
+
+  <div class="palette-hero">
+    <div class="swatch sw-ink">
+      <div class="sw-role">Основной</div>
+      <div class="sw-name">Ink</div>
+      <div class="sw-hex">#08080A</div>
+    </div>
+    <div class="swatch sw-signal">
+      <div class="sw-role">Сигнал</div>
+      <div class="sw-name">Signal</div>
+      <div class="sw-hex">#FF3C2E → #FF6B35</div>
+    </div>
+    <div class="swatch sw-wave">
+      <div class="sw-role">Глубина</div>
+      <div class="sw-name">Wave</div>
+      <div class="sw-hex">#0A2463 → #1B4FD8</div>
+    </div>
+    <div class="swatch sw-paper">
+      <div class="sw-role">Фон светлый</div>
+      <div class="sw-name">Paper</div>
+      <div class="sw-hex">#F5F2EC</div>
+    </div>
+    <div class="swatch sw-gold">
+      <div class="sw-role">Премиум</div>
+      <div class="sw-name">Gold</div>
+      <div class="sw-hex">#C9A84C</div>
+    </div>
+  </div>
+
+  <div class="color-usage">
+    <div class="cu-item">
+      <div class="cu-swatch" style="background:linear-gradient(90deg,#FF3C2E,#FF6B35)"></div>
+      <div class="cu-name">Signal — акцент</div>
+      <div class="cu-desc">Точки данных, ИИ-элементы, кнопки CTA, точка в логотипе, .AI маркер. Не более 10% от площади макета.</div>
+    </div>
+    <div class="cu-item">
+      <div class="cu-swatch" style="background:linear-gradient(90deg,#0A2463,#1B4FD8)"></div>
+      <div class="cu-name">Wave — фоны разделов</div>
+      <div class="cu-desc">Фоны для презентаций, баннеры, подложки под текст. Передаёт глубину и серьёзность технологического продукта.</div>
+    </div>
+    <div class="cu-item">
+      <div class="cu-swatch" style="background:linear-gradient(90deg,#C9A84C,#E8C97A)"></div>
+      <div class="cu-name">Gold — премиум</div>
+      <div class="cu-desc">Только для тарифа Enterprise, наград, партнёрских сертификатов и VIP-материалов. Используется редко, чтобы сохранять вес.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TYPOGRAPHY ════════════════════════════════════════ -->
+<section class="section type-section reveal">
+  <div class="s-label">04</div>
+  <h2 class="s-title">Типографика</h2>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <div class="type-meta-left">
+        <div class="t-family">Syne 800</div>
+        <div class="t-role">Дисплейный · Логотип · Заголовки</div>
+      </div>
+      <div class="type-meta-right">
+        Размеры: 88 / 64 / 48 / 32px<br>
+        Трекинг: —0.04em<br>
+        Только UPPERCASE
+      </div>
+    </div>
+    <div class="type-display">БЕЗОПАСНОСТЬ<br>НА НОВОМ УРОВНЕ</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <div class="type-meta-left">
+        <div class="t-family">Playfair Display Italic</div>
+        <div class="t-role">Акцентный · Слоганы · Цитаты</div>
+      </div>
+      <div class="type-meta-right">
+        Размеры: 40 / 28 / 22px<br>
+        Всегда курсив<br>
+        Title Case
+      </div>
+    </div>
+    <div class="type-serif">«Слышим риски раньше,<br>чем они случаются»</div>
+  </div>
+
+  <div class="type-specimen">
+    <div class="type-meta">
+      <div class="type-meta-left">
+        <div class="t-family">Syne Mono 400</div>
+        <div class="t-role">Технический · Данные · Метки · .AI маркер</div>
+      </div>
+      <div class="type-meta-right">
+        Размеры: 14 / 11 / 9px<br>
+        Буквенный интервал: +0.12em<br>
+        UPPERCASE для меток
+      </div>
+    </div>
+    <div class="type-mono">
+      RISK·LEVEL // 0.87<br>
+      AI·MODEL // GPT-4o<br>
+      STATUS // SIGNAL·ACTIVE
+    </div>
+  </div>
+
+  <div class="type-specimen" style="border:none;padding-bottom:0;margin-bottom:0">
+    <div class="type-meta">
+      <div class="type-meta-left">
+        <div class="t-family">DM Sans 300 / 400 / 500</div>
+        <div class="t-role">Основной текст · UI · Документы</div>
+      </div>
+      <div class="type-meta-right">
+        Размеры: 17 / 15 / 13px<br>
+        Межстрочный: 1.75–1.85<br>
+        Mixed Case
+      </div>
+    </div>
+    <p class="type-body-sample">
+      <strong>SIRENS.AI</strong> создаёт инструктажи по охране труда нового поколения.
+      Мы берём мёртвые PDF из 2003 года и превращаем их в живые видео-инструктажи
+      с ИИ-диктором, адаптированные под каждую профессию и производство.
+      <strong>За 48 часов. Без формализма.</strong>
+    </p>
+  </div>
+</section>
+
+<!-- ══ VOICE & TONE ═══════════════════════════════════════ -->
+<section class="voice-section reveal">
+  <div class="s-label">05</div>
+  <h2 class="s-title" style="font-family:'Playfair Display'">Голос<br><em>бренда</em></h2>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="voice-card-head">
+        <div class="voice-icon">🎯</div>
+        <div class="voice-card-title">Точно, не бюрократично</div>
+      </div>
+      <div class="voice-compare">
+        <div class="vc-bad">
+          <div class="vc-label">Не так</div>
+          <div class="vc-text">«В соответствии с требованиями Трудового кодекса РФ и ГОСТ Р 12.0.007 настоящим уведомляем...»</div>
+        </div>
+        <div class="vc-good">
+          <div class="vc-label">Так</div>
+          <div class="vc-text">«Ваши работники поймут риски с первого просмотра. Гарантируем — или переделаем.»</div>
+        </div>
+      </div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-card-head">
+        <div class="voice-icon">⚡</div>
+        <div class="voice-card-title">Смело, не агрессивно</div>
+      </div>
+      <div class="voice-compare">
+        <div class="vc-bad">
+          <div class="vc-label">Не так</div>
+          <div class="vc-text">«Ваши конкуренты уже используют ИИ в ОТ, а вы ещё нет?!»</div>
+        </div>
+        <div class="vc-good">
+          <div class="vc-label">Так</div>
+          <div class="vc-text">«Первый в России инструктаж с ИИ-диктором. Потому что PDF — это прошлый век.»</div>
+        </div>
+      </div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-card-head">
+        <div class="voice-icon">🧠</div>
+        <div class="voice-card-title">Умно, не высокомерно</div>
+      </div>
+      <div class="voice-compare">
+        <div class="vc-bad">
+          <div class="vc-label">Не так</div>
+          <div class="vc-text">«Наши нейросетевые алгоритмы на основе LLM обеспечивают синергию...»</div>
+        </div>
+        <div class="vc-good">
+          <div class="vc-label">Так</div>
+          <div class="vc-text">«ИИ пишет сценарий. Эксперт проверяет. Работник смотрит и запоминает.»</div>
+        </div>
+      </div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-card-head">
+        <div class="voice-icon">🌊</div>
+        <div class="voice-card-title">Тепло, не сентиментально</div>
+      </div>
+      <div class="voice-compare">
+        <div class="vc-bad">
+          <div class="vc-label">Не так</div>
+          <div class="vc-text">«Мы заботимся о каждом сотруднике и искренне переживаем за их судьбы...»</div>
+        </div>
+        <div class="vc-good">
+          <div class="vc-label">Так</div>
+          <div class="vc-text">«Каждый должен вернуться домой живым. Для этого мы и существуем.»</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="principles">
+    <div class="principle-card">
+      <div class="p-num">01</div>
+      <div class="p-title">Конкретно</div>
+      <div class="p-desc">Цифры, сроки, результаты. «48 часов» лучше «быстро». «3× лучше усвоение» лучше «эффективнее».</div>
+    </div>
+    <div class="principle-card">
+      <div class="p-num">02</div>
+      <div class="p-title">Без воды</div>
+      <div class="p-desc">Никаких «инновационных решений» и «синергий». Если можно убрать слово — убираем.</div>
+    </div>
+    <div class="principle-card">
+      <div class="p-num">03</div>
+      <div class="p-title">С характером</div>
+      <div class="p-desc">Можно быть ироничными. Можно критиковать статус-кво в ОТ. Нельзя быть скучными.</div>
+    </div>
+    <div class="principle-card">
+      <div class="p-num">04</div>
+      <div class="p-title">Про людей</div>
+      <div class="p-desc">Мы делаем продукт, который спасает жизни. Это важнее технологий — технологии только инструмент.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ APPLICATIONS ══════════════════════════════════════ -->
+<section class="section app-section reveal">
+  <div class="s-label">06</div>
+  <h2 class="s-title">Применение<br>бренда</h2>
+
+  <!-- Business cards -->
+  <div style="margin-bottom:2px">
+    <div style="font-family:'Syne Mono';font-size:9px;letter-spacing:0.15em;color:var(--mist);text-transform:uppercase;margin-bottom:16px">Визитные карточки</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px">
+      <div class="bcard">
+        <div class="bcard-logo">SIRENS<span style="color:var(--signal)">.</span><span class="ai-sm">AI</span></div>
+        <div>
+          <div class="bcard-name">Анна Петрова</div>
+          <div class="bcard-role">Сооснователь · HSE-директор</div>
+          <div class="bcard-contact">
+            a.petrova@sirens.ai<br>
+            +7 (999) 000-00-00<br>
+            sirens.ai
+          </div>
+        </div>
+      </div>
+      <div class="bcard" style="background:var(--paper)">
+        <div class="bcard-logo" style="color:var(--ink)">SIRENS<span style="color:var(--signal)">.</span><span class="ai-sm">AI</span></div>
+        <div>
+          <div class="bcard-name" style="color:var(--ink)">Мария Иванова</div>
+          <div class="bcard-role" style="color:var(--mist)">Сооснователь · ИИ-разработка</div>
+          <div class="bcard-contact" style="color:rgba(0,0,0,0.3)">
+            m.ivanova@sirens.ai<br>
+            +7 (999) 000-00-01<br>
+            sirens.ai
+          </div>
+        </div>
+      </div>
+      <div class="bcard" style="background:var(--signal)">
+        <div class="bcard-logo" style="color:white">SIRENS<span style="color:rgba(255,255,255,0.5)">.</span><span style="font-family:'Syne Mono';font-size:12px;color:rgba(255,255,255,0.5);vertical-align:super">AI</span></div>
+        <div>
+          <div class="bcard-name" style="color:white">HSE-инструктажи<br>нового поколения</div>
+          <div class="bcard-contact" style="color:rgba(255,255,255,0.5);margin-top:12px">
+            sirens.ai<br>
+            info@sirens.ai
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Email sig + Presentation -->
+  <div style="margin-bottom:2px">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px">
+      <div>
+        <div style="font-family:'Syne Mono';font-size:9px;letter-spacing:0.15em;color:var(--mist);text-transform:uppercase;margin-bottom:16px">Email-подпись</div>
+        <div class="esig">
+          <div>
+            <div class="esig-logo-sm">SIRENS<span style="color:var(--signal)">.</span><span class="ai-r">AI</span></div>
+          </div>
+          <div class="esig-divider"></div>
+          <div>
+            <div class="esig-name">Анна Петрова</div>
+            <div class="esig-role">Сооснователь · HSE-директор</div>
+            <div class="esig-contacts">
+              sirens.ai · a.petrova@sirens.ai<br>
+              +7 (999) 000-00-00
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:'Syne Mono';font-size:9px;letter-spacing:0.15em;color:var(--mist);text-transform:uppercase;margin-bottom:16px">Обложка презентации</div>
+        <div class="pres-cover">
+          <div class="pres-logo">SIRENS<span style="color:var(--signal)">.</span><span class="ai-p">AI</span></div>
+          <div>
+            <div class="pres-title">ИИ-инструктажи по охране труда</div>
+            <div class="pres-meta" style="margin-top:16px">Коммерческое предложение · 2025</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- App icon -->
+  <div>
+    <div style="font-family:'Syne Mono';font-size:9px;letter-spacing:0.15em;color:var(--mist);text-transform:uppercase;margin-bottom:16px">Иконка приложения</div>
+    <div style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05)">
+      <div class="app-icon-row">
+        <div class="app-icon ai-dark">
+          <div class="icon-letter">S<span class="dot-s">·</span></div>
+        </div>
+        <div class="app-icon ai-signal">
+          <div class="icon-letter">S<span class="dot-s">·</span></div>
+        </div>
+        <div class="app-icon ai-wave">
+          <div class="icon-letter" style="color:white">S<span style="color:rgba(255,255,255,0.4);font-size:0.3em;vertical-align:super">AI</span></div>
+        </div>
+        <div class="icon-desc">
+          <strong>Монограмма S·</strong> — фирменный знак для фавикона,<br>
+          иконки приложения и малых форматов.<br>
+          Красная точка = сигнал активен.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CLOSER ══════════════════════════════════════════════ -->
+<section class="closer">
+  <div class="closer-logo">
+    SIRENS<span style="color:var(--signal)">.</span><span class="ai-c">AI</span>
+  </div>
+  <div class="closer-tagline">«Голос безопасности нового времени»</div>
+  <div class="closer-meta">
+    IT Safety Solutions · Основано 2025 · Россия<br>
+    ИИ-инструктажи · Диагностика культуры безопасности · HSE-консалтинг<br>
+    sirens.ai · info@sirens.ai
+  </div>
+</section>
+
+<script>
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

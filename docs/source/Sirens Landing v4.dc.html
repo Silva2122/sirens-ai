@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Space+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+  html,body{margin:0;background:#0a0a0a;color:#fff;font-family:Manrope,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:#fff;text-decoration:none}a:hover{color:#f63a3a}
+  input{font-family:Manrope,sans-serif}
+  input::placeholder{color:#646464}
+  @keyframes sirenGlow{0%,100%{opacity:.55;transform:scale(1)}45%{opacity:1;transform:scale(1.06)}}
+  @keyframes sirenRing{0%{transform:translate(-50%,-50%) scale(.15);opacity:.65}70%{opacity:.14}100%{transform:translate(-50%,-50%) scale(2.4);opacity:0}}
+  @keyframes sirenLamp{0%,100%{filter:drop-shadow(0 -30px 90px rgba(246,58,58,.4)) brightness(.94)}45%{filter:drop-shadow(0 -50px 160px rgba(246,58,58,.8)) brightness(1.12)}}
+  @media (prefers-reduced-motion:reduce){[data-siren-anim]{animation:none!important}}
+</style>
+</helmet>
+
+<div style="background:#0a0a0a;color:#fff;min-height:100vh;overflow-x:clip">
+
+
+<section id="top" data-screen-label="Hero" style="position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:44px 64px;background-image:url('./assets/hero-siren-5.png');background-size:cover;background-position:60% center;background-color:#0a0a0a;overflow:hidden">
+  <div style="position:absolute;inset:0;background-image:url('./assets/hero-siren-5.png');background-size:cover;background-position:60% center;filter:blur(44px) brightness(2.1) saturate(135%);mix-blend-mode:screen;opacity:.62;pointer-events:none"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 64% at 62% 44%,rgba(0,0,0,0) 32%,rgba(0,0,0,.55) 72%,rgba(0,0,0,.88) 100%);pointer-events:none"></div>
+  <div style="position:absolute;inset:0;opacity:.42;mix-blend-mode:overlay;pointer-events:none;background-image:url(&quot;data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='140' height='140' filter='url(%23n)'/></svg>&quot;);background-size:140px 140px"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.94) 0%,rgba(10,10,10,.7) 34%,rgba(10,10,10,.16) 62%,rgba(10,10,10,0) 80%);pointer-events:none"></div>
+  <div style="position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(0deg,#0a0a0a 8%,rgba(10,10,10,0) 100%);pointer-events:none"></div>
+
+  <div style="position:absolute;right:6%;bottom:9%;z-index:2;display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end">
+    <div data-glass="tilt" style="min-width:214px;padding:22px 24px;border-radius:14px;background:linear-gradient(150deg,rgba(246,58,58,.34) 0%,rgba(255,255,255,.10) 55%,rgba(255,255,255,.16) 100%);border:1px solid rgba(255,255,255,.30);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 20px 48px rgba(0,0,0,.45);display:flex;align-items:center;gap:16px">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 3 3 7v5c0 5 3.8 8.4 9 9 5.2-.6 9-4 9-9V7l-9-4Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:36px;line-height:1;letter-spacing:-.03em">20+</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.78);line-height:1.4">предприятий прошли аудит</div>
+      </div>
+    </div>
+    <div data-glass="tilt" style="min-width:214px;padding:22px 24px;border-radius:14px;background:linear-gradient(150deg,rgba(255,255,255,.20) 0%,rgba(255,255,255,.06) 42%,rgba(255,255,255,.10) 100%);border:1px solid rgba(255,255,255,.28);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 18px 44px rgba(0,0,0,.42);display:flex;align-items:center;gap:16px">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 9h8M8 13h5"/></svg>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:36px;line-height:1;letter-spacing:-.03em">10</div>
+        <div style="font-size:12px;color:rgba(255,255,255,.78);line-height:1.4">услуг в трёх направлениях</div>
+      </div>
+    </div>
+  </div>
+
+  <sc-if value="{{ showNav }}" hint-placeholder-val="{{ true }}">
+  <nav style="position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+  <a href="#top" style="display:flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:19px;letter-spacing:-.01em;white-space:nowrap"><span style="width:22px;height:22px;border-radius:7px;background:linear-gradient(140deg,#f63a3a,#8a1414);box-shadow:0 6px 18px rgba(246,58,58,.45);display:inline-block"></span><span>SIRENS<span style="color:#f63a3a">.</span>AI</span></a>
+  <div data-glass="flat" style="display:flex;gap:2px;padding:6px;min-width:0;flex-shrink:1;flex-wrap:wrap;justify-content:center;border-radius:12px;background:linear-gradient(150deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.04) 45%,rgba(255,255,255,.09) 100%);border:1px solid rgba(255,255,255,.20);backdrop-filter:blur(26px) saturate(180%);-webkit-backdrop-filter:blur(26px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 14px 34px rgba(0,0,0,.35);font-size:13px">
+    <a href="#why" style="padding:8px 11px;border-radius:12px;color:rgba(255,255,255,.78);white-space:nowrap" style-hover="background:rgba(255,255,255,.14);color:#fff">Почему мы</a>
+    <a href="#services" style="padding:8px 11px;border-radius:12px;color:rgba(255,255,255,.78);white-space:nowrap" style-hover="background:rgba(255,255,255,.14);color:#fff">Услуги</a>
+    <a href="#diagnostics" style="padding:8px 11px;border-radius:12px;color:rgba(255,255,255,.78);white-space:nowrap" style-hover="background:rgba(255,255,255,.14);color:#fff">Диагностика</a>
+    <a href="#team" style="padding:8px 11px;border-radius:12px;color:rgba(255,255,255,.78);white-space:nowrap" style-hover="background:rgba(255,255,255,.14);color:#fff">Команда</a>
+    <a href="#contacts" style="padding:8px 11px;border-radius:12px;color:rgba(255,255,255,.78);white-space:nowrap" style-hover="background:rgba(255,255,255,.14);color:#fff">Контакты</a>
+  </div>
+  <a href="#contacts" style="display:inline-flex;align-items:center;gap:12px;background:#f63a3a;color:#fff;font-size:14px;font-weight:600;padding:8px 8px 8px 22px;border-radius:12px;white-space:nowrap" style-hover="background:#e02c2c;color:#fff">Оставить заявку<span style="width:30px;height:30px;border-radius:50%;background:#fff;color:#111;display:inline-flex;align-items:center;justify-content:center;font-size:13px">↗</span></a>
+  </nav>
+  </sc-if>
+
+  <div style="position:relative;flex:1;display:flex;align-items:center">
+  <div style="max-width:min(820px,66%);display:flex;flex-direction:column;gap:20px">
+    <h1 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(36px,4.8vw,92px);line-height:.98;letter-spacing:-.042em;text-transform:uppercase;padding-right:.06em;background:linear-gradient(130deg,#fff 0%,#fff 44%,#faaa86 74%,#f63a3a 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent">Голос<br>безопасности<br>нового времени</h1>
+    <p style="margin:0;max-width:460px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.7);text-wrap:pretty">Охрана труда как работающая система управления бизнес-рисками. Выстраиваем системы управления охраной труда и производственной безопасностью и интегрируем их в бизнес-процессы.</p>
+    <a href="#contacts" style="margin-top:20px;align-self:flex-start;display:inline-flex;align-items:center;gap:18px;background:#f63a3a;color:#fff;font-size:17px;font-weight:600;padding:12px 12px 12px 38px;border-radius:12px;white-space:nowrap" style-hover="background:#e02c2c;color:#fff">Оставить заявку<span style="width:46px;height:46px;border-radius:50%;background:#fff;color:#111;display:inline-flex;align-items:center;justify-content:center;font-size:17px">↗</span></a>
+  </div>
+  </div>
+</section>
+
+<section data-screen-label="Направления" style="position:relative;padding:120px 64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr);gap:16px">
+  <div style="position:relative;border-radius:14px;background:#121212;border:1px solid #262626;padding:28px;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+    <div style="font-size:12px;color:#f63a3a;font-weight:600">01</div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;letter-spacing:-.02em;text-wrap:balance">Требования законодательства</div>
+    <div style="font-size:13px;line-height:1.55;color:#a8a8a8;max-width:260px">Документация, подготовка к ГИТ, аудит СУОТ, оценка рисков, аутсорсинг ОТ.</div>
+    <div style="position:relative;margin:auto -28px -28px -28px;padding-top:6px;aspect-ratio:1.55;background-image:url('./assets/card-legal-2.png');background-size:118% auto;background-repeat:no-repeat;background-position:center 12%"></div>
+  </div>
+  <div style="position:relative;border-radius:14px;background:#121212;border:1px solid #262626;padding:28px;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+    <div style="font-size:12px;color:#f63a3a;font-weight:600">02</div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;letter-spacing:-.02em;text-wrap:balance">Финансовые инструменты</div>
+    <div style="font-size:13px;line-height:1.55;color:#a8a8a8;max-width:240px">Скидка к тарифу СФР, аудит экономических потерь.</div>
+    <div style="position:relative;margin:auto -28px -28px -28px;padding-top:6px;aspect-ratio:1.55;background-image:url('./assets/card-finance-3.png');background-size:118% auto;background-repeat:no-repeat;background-position:center top"></div>
+  </div>
+  <div style="position:relative;border-radius:14px;background:#121212;border:1px solid #262626;padding:28px;display:flex;flex-direction:column;gap:12px;overflow:hidden">
+    <div style="font-size:12px;color:#f63a3a;font-weight:600">03</div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:22px;letter-spacing:-.02em;text-wrap:balance">Технические системы</div>
+    <div style="font-size:13px;line-height:1.55;color:#a8a8a8;max-width:240px">Внедрение LOTO, SaaS-платформа ИИ для производственной безопасности.</div>
+    <div style="position:relative;margin:auto -28px -28px -28px;padding-top:6px;aspect-ratio:1.55;background-image:url('./assets/card-tech.png');background-size:118% auto;background-repeat:no-repeat;background-position:center top"></div>
+  </div>
+</section>
+
+<section id="why" data-screen-label="Почему актуально" style="padding:120px 64px;display:flex;flex-direction:column;gap:56px">
+  <div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:end">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:12px;text-transform:uppercase;color:#f63a3a;font-weight:600">Почему это актуально</div>
+      <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1.05;letter-spacing:-.03em">Вам будет полезен SIRENS, если…</h2>
+    </div>
+    <p style="margin:0;max-width:460px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.7);text-wrap:pretty">Законодательство обязывает каждого работодателя организовать систему управления охраной труда — независимо от численности сотрудников. Базовый комплект документов нужен всем.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px">
+    <sc-for list="{{ triggers }}" as="t" hint-placeholder-count="9">
+      <a href="#services" style="position:relative;display:flex;flex-direction:column;justify-content:space-between;gap:44px;min-height:220px;padding:22px 22px 24px;border-radius:14px;background:#121212;border:1px solid #262626;color:#fff;overflow:hidden;transition:background .25s,border-color .25s" style-hover="background:#f63a3a;border-color:#f63a3a;color:#fff">
+        <div style="position:absolute;left:16px;top:6px;font-family:'Space Grotesk',sans-serif;font-size:72px;line-height:1;letter-spacing:-.05em;color:rgba(255,255,255,.10);pointer-events:none;user-select:none">{{ t.n }}</div>
+        <div style="position:relative;display:flex;align-items:center;justify-content:flex-end">
+          <span style="width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);display:inline-flex;align-items:center;justify-content:center;font-size:14px">↗</span>
+        </div>
+        <div style="position:relative;display:flex;flex-direction:column;gap:12px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:21px;line-height:1.25;letter-spacing:-.02em;text-wrap:balance">{{ t.text }}</div>
+          <div style="display:inline-flex;align-items:center;gap:8px;font-size:12px;color:rgba(255,255,255,.7);padding-top:12px;border-top:1px solid rgba(255,255,255,.12)">{{ t.link }}</div>
+        </div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<section id="services" data-screen-label="Услуги" style="padding:120px 64px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:72px">
+  <div style="display:flex;flex-direction:column;gap:20px;align-self:start;position:sticky;top:120px">
+    <div style="font-size:12px;text-transform:uppercase;color:#f63a3a;font-weight:600">Услуги</div>
+    <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1.05;letter-spacing:-.03em">Что мы делаем.</h2>
+    <p style="margin:0;max-width:380px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.7)">Три направления, десять позиций: от базового комплекта документов до внедрения LOTO и ИИ-платформы.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+      <div style="border-radius:14px;background:#121212;border:1px solid #262626;overflow:hidden">
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 28px;border-bottom:1px solid #262626">
+          <div style="display:flex;align-items:center;gap:16px">
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:#f63a3a">{{ g.n }}</span>
+            <span style="font-family:'Space Grotesk',sans-serif;font-size:20px;line-height:1.2;letter-spacing:-.02em">{{ g.title }}</span>
+          </div>
+          <span style="font-size:12px;color:#646464;white-space:nowrap">{{ g.count }}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:6px 28px 10px">
+          <sc-for list="{{ g.items }}" as="s" hint-placeholder-count="3">
+            <div style="display:grid;grid-template-columns:minmax(0,1fr) 170px;gap:24px;align-items:center;min-height:56px;padding:0;border-bottom:1px solid #1c1c1c" style-hover="background:transparent">
+              <div style="font-size:15px;font-weight:500;line-height:1.35">{{ s.name }}</div>
+              <sc-if value="{{ showPrices }}" hint-placeholder-val="{{ true }}"><div style="font-family:'Space Grotesk',sans-serif;font-size:15px;color:#f63a3a;white-space:nowrap;text-align:right;font-variant-numeric:tabular-nums">{{ s.price }}</div></sc-if>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Философия" style="position:relative;padding:120px 64px 0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:20px;overflow:hidden;background:#0a0a0a">
+  <div data-siren-anim="glow" style="position:absolute;inset:auto -20% -30% -20%;height:70%;background:radial-gradient(ellipse at 50% 100%,rgba(246,58,58,.85) 0%,rgba(138,20,20,.55) 30%,rgba(10,10,10,0) 68%);pointer-events:none;transform-origin:50% 100%;animation:sirenGlow 3.4s ease-in-out infinite"></div>
+  <div style="position:relative;z-index:2;font-size:12px;text-transform:uppercase;color:#f63a3a;font-weight:600">Философия</div>
+  <div style="position:relative;z-index:2;font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:clamp(36px,4.8vw,92px);line-height:.98;letter-spacing:-.042em;max-width:900px;text-transform:uppercase">Мы слышим<br>риск раньше</div>
+  <p style="position:relative;z-index:2;margin:0;max-width:560px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.7);text-wrap:pretty">Помогаем увидеть и устранить риски до того, как они станут происшествиями, штрафами или убытками. Строим культуру безопасности, а не отчётность.</p>
+
+  <div style="position:relative;z-index:1;width:100%;display:grid;grid-template-columns:minmax(0,1fr) min(560px,38vw) minmax(0,1fr);gap:0;align-items:stretch;margin-top:36px;margin-bottom:calc(min(560px,38vw) * -0.2)">
+    <div style="position:relative;min-width:0">
+    <div style="position:absolute;left:0;right:-5%;top:30%;transform:translateY(-50%);display:flex;justify-content:flex-end;align-items:center;gap:12px">
+      <div data-glass="tilt" style="display:flex;flex-direction:column;gap:5px;text-align:left;padding:16px 20px;border-radius:12px;box-sizing:border-box;flex:0 1 292px;min-width:0;background:linear-gradient(150deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.04) 45%,rgba(255,255,255,.09) 100%);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 16px 40px rgba(0,0,0,.42)">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px">Конкретно</div>
+        <div style="font-size:12px;line-height:1.45;color:rgba(255,255,255,.68)">Цифры, сроки, результаты</div>
+      </div>
+      <span style="flex:0 1 64px;min-width:20px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.55))"></span>
+      <span style="width:8px;height:8px;border-radius:50%;background:#f63a3a;box-shadow:0 0 0 5px rgba(246,58,58,.22);flex:none"></span>
+    </div>
+    <div style="position:absolute;left:0;right:-1%;top:66%;transform:translateY(-50%);display:flex;justify-content:flex-end;align-items:center;gap:12px">
+      <div data-glass="tilt" style="display:flex;flex-direction:column;gap:5px;text-align:left;padding:16px 20px;border-radius:12px;box-sizing:border-box;flex:0 1 292px;min-width:0;background:linear-gradient(150deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.04) 45%,rgba(255,255,255,.09) 100%);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 16px 40px rgba(0,0,0,.42)">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px">Без воды</div>
+        <div style="font-size:12px;line-height:1.45;color:rgba(255,255,255,.68)">Без «синергий» и общих слов</div>
+      </div>
+      <span style="flex:0 1 64px;min-width:20px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.12),rgba(255,255,255,.55))"></span>
+      <span style="width:8px;height:8px;border-radius:50%;background:#f63a3a;box-shadow:0 0 0 5px rgba(246,58,58,.22);flex:none"></span>
+    </div>
+    </div>
+    <div style="position:relative;aspect-ratio:736/941">
+      <div data-siren-anim="ring" style="position:absolute;left:50%;top:34%;width:150%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(246,58,58,.55);transform-origin:50% 50%;pointer-events:none;animation:sirenRing 4.6s ease-out infinite"></div>
+      <div data-siren-anim="ring" style="position:absolute;left:50%;top:34%;width:150%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(246,58,58,.45);transform-origin:50% 50%;pointer-events:none;animation:sirenRing 4.6s ease-out infinite;animation-delay:1.6s"></div>
+      <div data-siren-anim="ring" style="position:absolute;left:50%;top:34%;width:150%;aspect-ratio:1;border-radius:50%;border:1px solid rgba(246,58,58,.32);transform-origin:50% 50%;pointer-events:none;animation:sirenRing 4.6s ease-out infinite;animation-delay:3.1s"></div>
+      <div data-siren-anim="lamp" style="position:absolute;inset:0;background-image:url('./assets/siren-cutout.png');background-size:227.3% auto;background-repeat:no-repeat;background-position:50% 0;pointer-events:none;animation:sirenLamp 3.4s ease-in-out infinite"></div>
+    </div>
+    <div style="position:relative;min-width:0">
+    <div style="position:absolute;right:0;left:-5%;top:30%;transform:translateY(-50%);display:flex;justify-content:flex-start;align-items:center;gap:12px">
+      <span style="width:8px;height:8px;border-radius:50%;background:#f63a3a;box-shadow:0 0 0 5px rgba(246,58,58,.22);flex:none"></span>
+      <span style="flex:0 1 64px;min-width:20px;height:1px;background:linear-gradient(270deg,rgba(255,255,255,.12),rgba(255,255,255,.55))"></span>
+      <div data-glass="tilt" style="display:flex;flex-direction:column;gap:5px;text-align:right;padding:16px 20px;border-radius:12px;box-sizing:border-box;flex:0 1 292px;min-width:0;background:linear-gradient(150deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.04) 45%,rgba(255,255,255,.09) 100%);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 16px 40px rgba(0,0,0,.42)">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px">С характером</div>
+        <div style="font-size:12px;line-height:1.45;color:rgba(255,255,255,.68)">Критикуем статус-кво в охране труда</div>
+      </div>
+    </div>
+    <div style="position:absolute;right:0;left:-1%;top:66%;transform:translateY(-50%);display:flex;justify-content:flex-start;align-items:center;gap:12px">
+      <span style="width:8px;height:8px;border-radius:50%;background:#f63a3a;box-shadow:0 0 0 5px rgba(246,58,58,.22);flex:none"></span>
+      <span style="flex:0 1 64px;min-width:20px;height:1px;background:linear-gradient(270deg,rgba(255,255,255,.12),rgba(255,255,255,.55))"></span>
+      <div data-glass="tilt" style="display:flex;flex-direction:column;gap:5px;text-align:right;padding:16px 20px;border-radius:12px;box-sizing:border-box;flex:0 1 292px;min-width:0;background:linear-gradient(150deg,rgba(255,255,255,.16) 0%,rgba(255,255,255,.04) 45%,rgba(255,255,255,.09) 100%);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);box-shadow:inset 0 1px 0 rgba(255,255,255,.45),0 16px 40px rgba(0,0,0,.42)">
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px">Про людей</div>
+        <div style="font-size:12px;line-height:1.45;color:rgba(255,255,255,.68)">Продукт, который спасает жизни</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section id="diagnostics" data-screen-label="Диагностика" style="padding:120px 64px;display:flex;flex-direction:column;gap:56px">
+  <div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:end">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:12px;text-transform:uppercase;color:#f63a3a;font-weight:600">Диагностика культуры безопасности</div>
+      <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1.05;letter-spacing:-.03em">Услышать, а не предположить.</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:24px;align-items:flex-start">
+      <p style="margin:0;max-width:460px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.7);text-wrap:pretty">Комплексная диагностика культуры безопасности — от быстрой онлайн-оценки на сайте до анонимного опроса и интервью с сотрудниками всех уровней.</p>
+      <a href="#contacts" style="display:inline-flex;align-items:center;gap:14px;background:#f63a3a;color:#fff;font-size:14px;font-weight:600;padding:8px 8px 8px 22px;border-radius:12px" style-hover="background:#e02c2c;color:#fff">Оценить уровень культуры безопасности<span style="width:34px;height:34px;border-radius:50%;background:#fff;color:#111;display:inline-flex;align-items:center;justify-content:center;font-size:14px">↗</span></a>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px">
+    <sc-for list="{{ steps }}" as="s" hint-placeholder-count="5">
+      <div style="display:flex;flex-direction:column;justify-content:space-between;gap:36px;min-height:190px;padding:24px;border-radius:12px;background:linear-gradient(170deg,rgba(250,170,134,.10),rgba(18,18,18,1) 60%);border:1px solid #262626">
+        <div style="font-size:12px;color:#f63a3a;font-weight:600">{{ s.n }}</div>
+        <div style="font-family:'Space Grotesk',sans-serif;font-size:17px;line-height:1.3;letter-spacing:-.015em;overflow-wrap:anywhere" lang="ru">{{ s.text }}</div>
+      </div>
+    </sc-for>
+  </div>
+  <div style="font-size:12px;color:#646464">Онлайн-инструмент диагностики ещё не спроектирован.</div>
+</section>
+
+<section id="team" data-screen-label="Команда" style="padding:120px 64px;display:flex;flex-direction:column;gap:56px">
+  <div style="display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:72px;align-items:end">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:12px;text-transform:uppercase;color:#f63a3a;font-weight:600">Команда</div>
+      <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1.05;letter-spacing:-.03em">Кто стоит за SIRENS.</h2>
+    </div>
+    <p style="margin:0;max-width:460px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.7);text-wrap:pretty">Две основательницы с опытом в аудите, промышленной безопасности и внедрении систем управления.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:16px">
+    <div style="position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(160deg,#2a0d0d,#0e0606);min-height:660px;display:flex;flex-direction:column;justify-content:flex-end">
+      <div style="position:absolute;inset:0"><image-slot id="v4-natalia" shape="rect" placeholder="Фото — Наталья Чистякова"></image-slot></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,8,.96) 0%,rgba(8,8,8,.82) 26%,rgba(8,8,8,.28) 52%,rgba(8,8,8,0) 78%);pointer-events:none"></div>
+      <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:16px;padding:40px">
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-size:11px;padding:7px 12px;border-radius:8px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:rgba(255,255,255,.86);white-space:nowrap">EY / Б1 Консалт</span>
+          <span style="font-size:11px;padding:7px 12px;border-radius:8px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:rgba(255,255,255,.86);white-space:nowrap">ISO 45001</span>
+          <span style="font-size:11px;padding:7px 12px;border-radius:8px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:rgba(255,255,255,.86);white-space:nowrap">ISO 14001</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:32px;line-height:1.05;letter-spacing:-.03em">Наталья Чистякова</div>
+          <div style="font-size:13px;color:#f63a3a;line-height:1.5;font-weight:600">Соучредитель · эксперт по охране труда и промышленной безопасности</div>
+          <div style="font-size:15px;color:rgba(255,255,255,.72);line-height:1.6;max-width:420px;text-wrap:pretty">6+ лет опыта, EY / Б1 Консалт, аудит 20+ предприятий, сертифицированный аудитор ISO 45001 и ISO 14001</div>
+        </div>
+      </div>
+    </div>
+    <div style="position:relative;border-radius:16px;overflow:hidden;background:linear-gradient(160deg,#2a0d0d,#0e0606);min-height:660px;display:flex;flex-direction:column;justify-content:flex-end">
+      <div style="position:absolute;inset:0"><image-slot id="v4-anastasia" shape="rect" placeholder="Фото — Анастасия Шишмарева"></image-slot></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(8,8,8,.96) 0%,rgba(8,8,8,.82) 26%,rgba(8,8,8,.28) 52%,rgba(8,8,8,0) 78%);pointer-events:none"></div>
+      <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:16px;padding:40px">
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <span style="font-size:11px;padding:7px 12px;border-radius:8px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:rgba(255,255,255,.86);white-space:nowrap">Лукойл Лубрикантс</span>
+          <span style="font-size:11px;padding:7px 12px;border-radius:8px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:rgba(255,255,255,.86);white-space:nowrap">РГУ нефти и газа</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font-family:'Space Grotesk',sans-serif;font-size:32px;line-height:1.05;letter-spacing:-.03em">Анастасия Шишмарева</div>
+          <div style="font-size:13px;color:#f63a3a;line-height:1.5;font-weight:600">Соучредитель · эксперт по внедрению систем управления и бизнес-процессам</div>
+          <div style="font-size:15px;color:rgba(255,255,255,.72);line-height:1.6;max-width:420px;text-wrap:pretty">Инженерное образование, опыт в «Лукойл Лубрикантс Казахстан», магистр РГУ нефти и газа им. Губкина</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" data-screen-label="Контакты" style="position:relative;padding:120px 64px;display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:72px;align-items:center;overflow:hidden;background-image:url('./assets/industrial-night.png');background-size:cover;background-position:92% center;background-color:#0a0a0a">
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,10,10,.9) 0%,rgba(10,10,10,.6) 30%,rgba(10,10,10,.1) 60%,rgba(10,10,10,0) 100%);pointer-events:none"></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(180deg,#0a0a0a 0%,rgba(10,10,10,0) 20%,rgba(10,10,10,0) 76%,#0a0a0a 100%);pointer-events:none"></div>
+
+  <div style="position:relative;z-index:2;display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="font-size:12px;text-transform:uppercase;color:#f63a3a;font-weight:600">Контакты</div>
+      <h2 style="margin:0;font-family:'Space Grotesk',sans-serif;font-weight:400;font-size:clamp(36px,3.6vw,52px);line-height:1.05;letter-spacing:-.03em">Риск не ждёт<br>планового аудита.</h2>
+      <p style="margin:0;max-width:420px;font-size:16px;line-height:1.6;color:rgba(255,255,255,.7);text-wrap:pretty">Расскажите о предприятии — вернёмся с оценкой ситуации и планом первых шагов.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,max-content));gap:28px 56px">
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.42)">Почта</span>
+        <a href="mailto:SirensLLC@yandex.ru" style="font-size:17px">SirensLLC@yandex.ru</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.42)">Телефон</span>
+        <span style="display:flex;flex-direction:column;gap:4px;font-size:17px"><span>+7 (___) ___-__-__</span><span>+7 (___) ___-__-__</span></span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.42)">Telegram</span>
+        <span style="display:flex;flex-direction:column;gap:4px;font-size:17px"><span>@_______</span><span>@_______</span></span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.42)">Адрес</span>
+        <span style="font-size:17px">Москва</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <span style="font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.42)">Часы работы</span>
+        <span style="font-size:17px">пн–пт, 9:00–18:00</span>
+      </div>
+    </div>
+  </div>
+
+  <form style="position:relative;z-index:2;display:flex;flex-direction:column;width:100%;max-width:460px;justify-self:end;box-sizing:border-box;padding:36px 36px 30px;border-radius:16px;background:linear-gradient(150deg,rgba(255,255,255,.10) 0%,rgba(14,14,14,.9) 38%,rgba(14,14,14,.95) 100%);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(30px) saturate(140%);-webkit-backdrop-filter:blur(30px) saturate(140%);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 34px 80px rgba(0,0,0,.6)" onSubmit="{{ onSubmit }}">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:10px">
+      <span style="font-family:'Space Grotesk',sans-serif;font-size:22px;letter-spacing:-.02em">Заявка</span>
+      <span style="font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.42)">Ответим за 1 день</span>
+    </div>
+    <label style="display:flex;flex-direction:column;gap:8px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14)">
+      <span style="display:flex;align-items:center;gap:10px;font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.42)"><span style="color:#f63a3a">01</span>Имя</span>
+      <input placeholder="Как к вам обращаться" style-focus="outline:none" style="background:transparent;border:0;color:#fff;font-family:Manrope,sans-serif;font-size:18px;padding:0;outline:none;width:100%">
+    </label>
+    <label style="display:flex;flex-direction:column;gap:8px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14)">
+      <span style="display:flex;align-items:center;gap:10px;font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.42)"><span style="color:#f63a3a">02</span>Почта</span>
+      <input placeholder="name@company.ru" type="email" style="background:transparent;border:0;color:#fff;font-family:Manrope,sans-serif;font-size:18px;padding:0;outline:none;width:100%">
+    </label>
+    <label style="display:flex;flex-direction:column;gap:8px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.14)">
+      <span style="display:flex;align-items:center;gap:10px;font-size:12px;text-transform:uppercase;color:rgba(255,255,255,.42)"><span style="color:#f63a3a">03</span>Телефон</span>
+      <input placeholder="+7 (___) ___-__-__" type="tel" style="background:transparent;border:0;color:#fff;font-family:Manrope,sans-serif;font-size:18px;padding:0;outline:none;width:100%">
+    </label>
+    <label style="display:flex;align-items:flex-start;gap:10px;font-size:12px;line-height:1.5;color:rgba(255,255,255,.6);padding:20px 0 22px"><input type="checkbox" style="margin:1px 0 0;accent-color:#f63a3a;width:15px;height:15px;flex:none">Согласен на обработку персональных данных</label>
+    <button type="submit" style="display:flex;align-items:center;justify-content:space-between;gap:16px;background:#f63a3a;color:#fff;border:0;font-family:Manrope,sans-serif;font-size:16px;font-weight:600;padding:10px 10px 10px 26px;border-radius:12px;cursor:pointer;text-align:left" style-hover="background:#e02c2c">{{ submitLabel }}<span style="width:40px;height:40px;border-radius:50%;background:#fff;color:#111;display:inline-flex;align-items:center;justify-content:center;font-size:15px;flex:none">↗</span></button>
+  </form>
+</section>
+
+<footer data-screen-label="Футер" style="padding:64px 64px 40px;display:flex;flex-direction:column;gap:32px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <div style="font-family:'Space Grotesk',sans-serif;font-weight:500;font-size:18px">SIRENS<span style="color:#f63a3a">.</span>AI</div>
+      <div style="font-size:14px;color:#a8a8a8">Голос безопасности нового времени</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:#a8a8a8;line-height:1.6;text-align:right">
+      <div>IT Safety Solutions · Основано 2025 · Москва</div>
+      <div>Аудит и документация ОТ · Аутсорсинг ОТ · Диагностика культуры безопасности · Внедрение LOTO</div>
+      <div style="display:flex;gap:24px;justify-content:flex-end"><a href="#top">sirens.ai</a><a href="mailto:SirensLLC@yandex.ru">SirensLLC@yandex.ru</a></div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px;padding-top:20px;font-size:12px;color:#646464"><span style="width:6px;height:6px;border-radius:50%;background:#f63a3a;display:inline-block"></span>Прототип для обсуждения — цены, сроки и контакты требуют финального подтверждения</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showNav&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Структура&quot;},&quot;showPrices&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Структура&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false };
+  componentDidMount() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const root = document.getElementById('dc-root') || document;
+    root.querySelectorAll('[data-glass]').forEach((el) => {
+      el.dataset.baseBg = el.style.backgroundImage || getComputedStyle(el).backgroundImage;
+      el.style.transition = 'transform .35s cubic-bezier(.2,.7,.3,1), background-image .12s linear';
+      el.style.willChange = 'transform, background-image';
+    });
+
+    this.onMove = (e) => {
+      const el = e.target.closest && e.target.closest('[data-glass]');
+      if (this.active && this.active !== el) this.reset(this.active);
+      if (!el) { this.active = null; return; }
+      this.active = el;
+      const r = el.getBoundingClientRect();
+      const x = ((e.clientX - r.left) / r.width) * 100;
+      const y = ((e.clientY - r.top) / r.height) * 100;
+      el.style.backgroundImage =
+        'radial-gradient(340px circle at ' + x + '% ' + y + '%, rgba(255,255,255,.34), rgba(255,255,255,.06) 45%, rgba(255,255,255,0) 70%), ' +
+        el.dataset.baseBg;
+      const tilt = el.dataset.glass === 'tilt' ? 4 : 0;
+      if (tilt) {
+        el.style.transform = 'perspective(900px) rotateX(' + ((50 - y) / 50 * tilt) + 'deg) rotateY(' + ((x - 50) / 50 * tilt) + 'deg)';
+      }
+    };
+    this.reset = (el) => {
+      el.style.backgroundImage = el.dataset.baseBg;
+      if (el.dataset.glass === 'tilt') el.style.transform = '';
+    };
+    this.onLeave = () => { if (this.active) { this.reset(this.active); this.active = null; } };
+    document.addEventListener('mousemove', this.onMove, { passive: true });
+    document.addEventListener('mouseleave', this.onLeave);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousemove', this.onMove);
+    document.removeEventListener('mouseleave', this.onLeave);
+  }
+
+  renderVals() {
+    return {
+      showNav: this.props.showNav ?? true,
+      showPrices: this.props.showPrices ?? true,
+      submitLabel: this.state.sent ? 'Заявка отправлена' : 'Отправить',
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      triggers: [
+        { n: '01', text: 'Нет документов по охране труда', link: 'Разработка документации' },
+        { n: '02', text: 'Документы есть, но непонятно, соответствуют ли они закону', link: 'Актуализация документации' },
+        { n: '03', text: 'Получили уведомление о проверке ГИТ', link: 'Подготовка к ГИТ + аудит' },
+        { n: '04', text: 'Нет ресурсов на оценку профессиональных рисков', link: 'Оценка проф. рисков' },
+        { n: '05', text: 'Компания не снижает затраты на ОТ, хотя могла бы', link: 'Скидка СФР' },
+        { n: '06', text: 'Нет штатного специалиста по ОТ', link: 'Аутсорсинг по ОТ' },
+        { n: '07', text: 'Нужно понять реальное состояние системы ОТиПБ', link: 'Диагностика системы ОТ' },
+        { n: '08', text: 'Риск случайного запуска оборудования при ремонте', link: 'Внедрение LOTO' },
+        { n: '09', text: 'Запускается новое производство или филиал', link: 'Диагностика системы ОТ' },
+      ],
+      groups: [
+        { n: '01', title: 'Выполнение требований законодательства', count: '6 услуг', items: [
+          { name: 'Разработка документации по ОТ «под ключ»', price: 'от 50 000 ₽' },
+          { name: 'Актуализация документации', price: 'от 5 000 ₽' },
+          { name: 'Подготовка к проверкам ГИТ', price: 'от 40 000 ₽' },
+          { name: 'Аудит системы управления ОТ (СУОТ)', price: 'от 40 000 ₽' },
+          { name: 'Оценка профессиональных рисков', price: '700 ₽/место' },
+          { name: 'Аутсорсинг функции охраны труда', price: 'от 35 000 ₽/мес' },
+        ]},
+        { n: '02', title: 'Финансовые инструменты в ОТ', count: '2 услуги', items: [
+          { name: 'Скидка к тарифу СФР по травматизму', price: '15% от экономии' },
+          { name: 'Аудит экономических потерь от рисков ОТ', price: 'от 5 000 ₽' },
+        ]},
+        { n: '03', title: 'Внедрение технических систем', count: '2 услуги', items: [
+          { name: 'Внедрение системы LOTO', price: 'от 450 000 ₽' },
+          { name: 'SaaS-платформа для ИИ в производственной безопасности', price: 'в разработке' },
+        ]},
+      ],
+      principlesLeft: [
+        { title: 'Конкретно', text: 'Цифры, сроки, результаты' },
+        { title: 'Без воды', text: 'Никаких «инновационных решений» и «синергий»' },
+      ],
+      principlesRight: [
+        { title: 'С характером', text: 'Можно критиковать статус-кво в ОТ' },
+        { title: 'Про людей', text: 'Продукт, который спасает жизни' },
+      ],
+      principles: [
+        { title: 'Конкретно', text: 'Цифры, сроки, результаты' },
+        { title: 'Без воды', text: 'Никаких «инновационных решений» и «синергий»' },
+        { title: 'С характером', text: 'Можно критиковать статус-кво в ОТ' },
+        { title: 'Про людей', text: 'Продукт, который спасает жизни' },
+      ],
+      steps: [
+        { n: '01', text: 'Онлайн-диагностика на сайте' },
+        { n: '02', text: 'Анонимный пульс-опрос сотрудников' },
+        { n: '03', text: 'Структурированные интервью по ролям' },
+        { n: '04', text: 'Профиль зрелости культуры безопасности' },
+        { n: '05', text: 'План перехода на следующий уровень' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

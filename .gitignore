@@ -1,0 +1,21 @@
+node_modules/
+dist/
+build/
+.next/
+out/
+.env
+.env.local
+.DS_Store
+*.log
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+
+# Материалы заказчика: черновой бриф с ценами и личными контактами,
+# исходные презентации. Репозиторий публичный — держим их только локально.
+docs/client-brief.md
+docs/*.local.md
+docs/source/*.pptx
+
+# Исходное фото от заказчика, лежит в корне
+/2026-09-10 13.01.05.jpg
