@@ -1,7 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import CtaButton from "@/components/CtaButton";
+import CabIcon from "@/components/cabinet/CabIcons";
 
 const NAV = [
   { href: "#services", label: "Услуги" },
@@ -82,6 +84,11 @@ export default function Header() {
         </div>
 
         <div className="nav__actions">
+          {/* Вход в кабинет: без сессии /cabinet/ сам переведёт на страницу входа. */}
+          <Link href="/cabinet/" className="nav__cabinet" aria-label="Личный кабинет" title="Личный кабинет">
+            <CabIcon name="user" />
+            <span className="nav__cabinet-label">Личный кабинет</span>
+          </Link>
           <CtaButton className="cta cta--md nav__cta">
             Оставить заявку
             <span className="cta__arrow">↗</span>

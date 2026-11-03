@@ -404,7 +404,6 @@ section[id] {
   -webkit-backdrop-filter: blur(24px) saturate(180%);
 }
 
-
 /* ==========================================================================
    Первый экран: скролл-сцена с видео
    ========================================================================== */
@@ -645,6 +644,60 @@ section[id] {
 
 .nav__links-cta {
   display: none;
+}
+
+/* Вход в личный кабинет — стеклянная кнопка в тон панели ссылок, высотой с CTA. */
+.nav__cabinet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  width: 52px;
+  min-height: 52px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(26px) saturate(180%);
+  -webkit-backdrop-filter: blur(26px) saturate(180%);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: #fff;
+  white-space: nowrap;
+  transition:
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.nav__cabinet:hover {
+  border-color: var(--signal);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+/* Подпись помещается рядом с пятью ссылками только на широких экранах;
+   уже — остаётся иконка (название есть в aria-label и подсказке). */
+.nav__cabinet-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (min-width: 1600px) {
+  .nav__cabinet {
+    width: auto;
+    padding: 0 var(--space-5);
+  }
+
+  .nav__cabinet-label {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+  }
 }
 
 /* Бургер — только на узких экранах. */
@@ -1064,7 +1117,6 @@ section[id] {
   opacity: 0.85;
   flex: none;
 }
-
 
 .trigger__arrow {
   width: 34px;
@@ -1932,7 +1984,6 @@ section[id] {
   overflow-wrap: anywhere;
 }
 
-
 /* ==========================================================================
    Команда
    ========================================================================== */
@@ -2626,7 +2677,6 @@ section[id] {
 }
 
 
-
 /* ==========================================================================
    Анимации
    ========================================================================== */
@@ -2734,6 +2784,22 @@ section[id] {
    только на узких экранах, которых в исходном макете не было.
    ========================================================================== */
 
+/* До 1366px ссылкам с кнопкой кабинета тесно — ужимаем кегль и поля,
+   иначе панель ссылок переносится на вторую строку. */
+@media (max-width: 1366px) {
+  .nav__links {
+    font-size: var(--text-sm);
+  }
+
+  .nav__link {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .nav__actions {
+    gap: var(--space-2);
+  }
+}
+
 @media (max-width: 1180px) {
   :root {
     --pad-x: var(--space-7);
@@ -2747,6 +2813,10 @@ section[id] {
 
   .nav__link {
     padding: var(--space-2) var(--space-3);
+  }
+
+  .nav__link {
+    padding: var(--space-2);
   }
 
   .stage__copy {
@@ -2816,7 +2886,6 @@ section[id] {
   .member__photo img {
     object-position: 50% 15%;
   }
-
 
   /* Узкий экран: сирена сверху, карточки обычным списком под ней. */
   .philosophy__stage {
@@ -2925,7 +2994,6 @@ section[id] {
   }
 
 
-
   .philosophy__cards {
     grid-template-columns: minmax(0, 1fr);
   }
@@ -2937,6 +3005,12 @@ section[id] {
   /* Ссылки живут в выпадающей панели под шапкой, бургер её открывает. */
   .nav__burger {
     display: block;
+  }
+
+  /* Рядом с бургером — квадрат того же размера. */
+  .nav__cabinet {
+    width: 44px;
+    min-height: 44px;
   }
 
   .nav__links {
@@ -5923,7 +5997,6 @@ html.reveal-ready
   text-wrap: pretty;
 }
 
-
 /*
  * Все страницы кабинета — дашборд, опросник, результат — собраны из одних
  * блоков, кегли и отступы только из токенов:
@@ -7059,7 +7132,6 @@ button.pills__col:not(:disabled):hover .pills__letter {
 .acc__item:last-child {
   border-bottom: 1px solid var(--line);
 }
-
 
 .acc__head {
   display: grid;
