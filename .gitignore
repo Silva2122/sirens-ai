@@ -17,8 +17,19 @@ docs/client-brief.md
 docs/*.local.md
 docs/source/*.pptx
 
+# Правки заказчика со скриншотами — тоже только локально
+/Комментарии по сайту.docx
+
 # Исходное фото от заказчика, лежит в корне
 /2026-09-10 13.01.05.jpg
 
 # статический экспорт для Pages
 out/
+
+# Исходные фото от заказчика (на сайт идут обработанные копии из public/assets/team)
+docs/source/photos/
+
+# Исходники методологии от заказчика — только локально (в коде копия lib/assessment-spec.json)
+/SIRENS_*.xlsx
+/Методология_SIRENS_УКБ.docx
+/sirens_spec (1).json

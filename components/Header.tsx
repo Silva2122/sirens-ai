@@ -1,11 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import CtaButton from "@/components/CtaButton";
 
 const NAV = [
-  { href: "#why", label: "Почему мы" },
   { href: "#services", label: "Услуги" },
-  { href: "#diagnostics", label: "Диагностика" },
+  { href: "#why", label: "Польза для\u00a0бизнеса" },
+  { href: "#diagnostics", label: "Диагностика культуры безопасности" },
   { href: "#team", label: "Команда" },
   { href: "#contacts", label: "Контакты" },
 ];
@@ -27,8 +28,11 @@ export default function Header() {
   }, []);
 
   // Открытое меню закрываем, если экран стал шире мобильного или нажали Esc.
+  // Пока оно открыто, страница под полноэкранным листом не прокручивается.
   useEffect(() => {
     if (!open) return;
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
     const narrow = window.matchMedia("(max-width: 640px)");
     const onChange = () => {
       if (!narrow.matches) setOpen(false);
@@ -39,6 +43,7 @@ export default function Header() {
     narrow.addEventListener("change", onChange);
     window.addEventListener("keydown", onKey);
     return () => {
+      document.body.style.overflow = prevOverflow;
       narrow.removeEventListener("change", onChange);
       window.removeEventListener("keydown", onKey);
     };
@@ -52,7 +57,7 @@ export default function Header() {
     >
       <nav className="nav">
         <a href="#top" className="logo" onClick={() => setOpen(false)}>
-          SIRENS<span className="logo__dot">.</span>AI
+          SIRENS<span className="logo__dot">.</span>
         </a>
 
         <div className="nav__links" id="nav-links" data-glass="flat">
@@ -67,21 +72,20 @@ export default function Header() {
             </a>
           ))}
           {/* На узких экранах кнопка живёт здесь, в выпадающем меню. */}
-          <a
-            href="#contacts"
+          <CtaButton
             className="cta cta--md nav__links-cta"
             onClick={() => setOpen(false)}
           >
             Оставить заявку
             <span className="cta__arrow">↗</span>
-          </a>
+          </CtaButton>
         </div>
 
         <div className="nav__actions">
-          <a href="#contacts" className="cta cta--md nav__cta">
+          <CtaButton className="cta cta--md nav__cta">
             Оставить заявку
             <span className="cta__arrow">↗</span>
-          </a>
+          </CtaButton>
           <button
             type="button"
             className="nav__burger"

@@ -1,0 +1,11 @@
+# Apache-правила боевого хостинга (reg.ru). Файл из public/ попадает в out/ при
+# сборке, так что выкладка его не теряет.
+ErrorDocument 404 /404.html
+
+# HTML не кэшировать: после выкладки все сразу видят новую версию,
+# а ассеты с хэшами в имени кэшируются сколько угодно.
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>

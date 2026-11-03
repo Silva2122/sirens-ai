@@ -58,16 +58,74 @@ export function elbowLeader(card: Box, lamp: Lamp, stub: number): Leader | null 
   };
 }
 
+/** Где лежит картинка лампы в координатах контейнера. */
+export type LampBox = { left: number; top: number; width: number; height: number };
+
+/**
+ * Контур лампы: по доле высоты (0–1) возвращает долю ширины, на которой
+ * силуэт начинается (side = -1, левый край) или кончается (side = 1, правый).
+ */
+export type Edge = (yFrac: number, side: -1 | 1) => number;
+
+/**
+ * Та же выноска, но последний скос упирается не в условный эллипс, а в
+ * реальный силуэт лампы: точка ложится ровно на край плафона или корпуса.
+ * diag — длина скоса под 45°; если полка при этом ушла бы назад, скос
+ * укорачиваем.
+ */
+export function silhouetteLeader(
+  card: Box,
+  lamp: LampBox,
+  edge: Edge,
+  stub: number,
+  diag: number
+): Leader | null {
+  const midX = (card.left + card.right) / 2;
+  const cx = lamp.left + lamp.width / 2;
+  // центр плафона: от него решаем, вверх или вниз выходит стойка и куда
+  // клонится скос — верхние карточки целятся в плафон, нижние в корпус
+  const cy = lamp.top + lamp.height * 0.33;
+
+  const down = cy > (card.top + card.bottom) / 2;
+  const y0 = down ? card.bottom : card.top;
+  const y1 = y0 + (down ? stub : -stub);
+
+  const side: -1 | 1 = midX < cx ? -1 : 1; // с какой стороны лампы карточка
+  const dirX = -side; // скос идёт к лампе
+  const dirY = cy > y1 ? 1 : -1; // и к её середине по высоте
+
+  for (let d = diag; d >= 0; d -= 4) {
+    const ty = y1 + d * dirY;
+    const yFrac = (ty - lamp.top) / lamp.height;
+    if (yFrac < 0.02 || yFrac > 0.92) continue;
+    const tx = lamp.left + edge(yFrac, side) * lamp.width;
+    const kneeX = tx - d * dirX;
+    // полка должна идти от карточки к лампе, не назад
+    if ((kneeX - midX) * dirX < 0) continue;
+    return {
+      d: `M ${midX} ${y0} L ${midX} ${y1} L ${kneeX} ${y1} L ${tx} ${ty}`,
+      dotX: tx,
+      dotY: ty,
+      x0: midX,
+      y0,
+    };
+  }
+  return null;
+}
+
 /** Кладёт готовую выноску в группу SVG. */
 export function applyLeader(
   group: SVGGElement,
   grad: Element | undefined,
   leader: Leader | null
 ) {
+  // Карточка внутри габарита лампы — выноску не рисуем. Прячем атрибутом,
+  // а не opacity: его перебивает CSS появления карточек в «Философии».
   if (!leader) {
-    group.setAttribute("opacity", "0");
+    group.setAttribute("visibility", "hidden");
     return;
   }
+  group.removeAttribute("visibility");
   group.querySelector("[data-leader-line]")?.setAttribute("d", leader.d);
   const dot = group.querySelector("[data-leader-dot]");
   dot?.setAttribute("cx", String(leader.dotX));

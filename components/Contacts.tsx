@@ -1,12 +1,15 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import LeadForm from "@/components/LeadForm";
+import { founders } from "@/lib/content";
 
 export default function Contacts() {
-  const [sent, setSent] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   // Фоновый ролик крутится сам, но при prefers-reduced-motion замирает на постере.
+  // Источник подставляем, только когда подвал подходит к экрану: иначе ролик
+  // качался с первых секунд и отбирал канал у видео первого экрана.
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -20,9 +23,22 @@ export default function Contacts() {
       }
     };
 
-    apply();
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (!entries.some((e) => e.isIntersecting)) return;
+        io.disconnect();
+        video.src = "/assets/contacts-beacon.mp4";
+        apply();
+      },
+      { rootMargin: "100% 0px" }
+    );
+    io.observe(video);
+
     media.addEventListener("change", apply);
-    return () => media.removeEventListener("change", apply);
+    return () => {
+      io.disconnect();
+      media.removeEventListener("change", apply);
+    };
   }, []);
 
   return (
@@ -33,13 +49,11 @@ export default function Contacts() {
         ref={videoRef}
         className="contacts__video"
         suppressHydrationWarning
-        src="/assets/contacts-beacon.mp4"
         poster="/assets/contacts-beacon-poster.jpg"
-        autoPlay
         loop
         muted
         playsInline
-        preload="metadata"
+        preload="none"
         aria-hidden="true"
       />
       <div className="contacts__scrim" />
@@ -49,12 +63,12 @@ export default function Contacts() {
         <div className="contacts__head">
           <div className="eyebrow">Контакты</div>
           <h2 className="section-title">
-            Риск не ждёт
+            Риск не&nbsp;ждёт
             <br />
             планового аудита.
           </h2>
           <p className="lede">
-            Расскажите о предприятии — вернёмся с оценкой ситуации и планом
+            Расскажите о&nbsp;предприятии&nbsp;— вернёмся с&nbsp;оценкой ситуации и&nbsp;планом
             первых шагов.
           </p>
         </div>
@@ -68,20 +82,36 @@ export default function Contacts() {
           <div className="contact">
             <span className="contact__label">Телефон</span>
             <span className="contact__stack">
-              <span>+7 (___) ___-__-__</span>
-              <span>+7 (___) ___-__-__</span>
+              {founders.map((f) => (
+                <a href={`tel:${f.tel}`} className="contact__value" key={f.tel}>
+                  {f.phone}
+                </a>
+              ))}
             </span>
           </div>
           <div className="contact">
             <span className="contact__label">Telegram</span>
             <span className="contact__stack">
-              <span>@_______</span>
-              <span>@_______</span>
+              {founders.map((f) => (
+                <a
+                  href={`https://t.me/${f.telegram}`}
+                  className="contact__value"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  key={f.telegram}
+                >
+                  @{f.telegram}
+                </a>
+              ))}
             </span>
           </div>
           <div className="contact">
             <span className="contact__label">Адрес</span>
-            <span className="contact__value">Москва</span>
+            <span className="contact__value">
+              Москва, ул.&nbsp;Дмитрия Ульянова, 31, 55/4
+              <br />
+              м.&nbsp;Академическая
+            </span>
           </div>
           <div className="contact">
             <span className="contact__label">Часы работы</span>
@@ -90,44 +120,7 @@ export default function Contacts() {
         </div>
       </div>
 
-      <form
-        className="form"
-        onSubmit={(e) => {
-          e.preventDefault();
-          setSent(true);
-        }}
-      >
-        <div className="form__head">
-          <span className="form__title">Заявка</span>
-          <span className="form__promise">Ответим за 1 день</span>
-        </div>
-        <label className="field">
-          <span className="field__label">
-            <span className="field__n">01</span>Имя
-          </span>
-          <input name="name" placeholder="Как к вам обращаться" />
-        </label>
-        <label className="field">
-          <span className="field__label">
-            <span className="field__n">02</span>Почта
-          </span>
-          <input name="email" type="email" placeholder="name@company.ru" />
-        </label>
-        <label className="field">
-          <span className="field__label">
-            <span className="field__n">03</span>Телефон
-          </span>
-          <input name="phone" type="tel" placeholder="+7 (___) ___-__-__" />
-        </label>
-        <label className="consent">
-          <input type="checkbox" name="consent" />
-          Согласен на обработку персональных данных
-        </label>
-        <button type="submit" className="submit">
-          {sent ? "Заявка отправлена" : "Отправить"}
-          <span className="submit__arrow">↗</span>
-        </button>
-      </form>
+      <LeadForm />
     </section>
   );
 }

@@ -2,20 +2,21 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const WORD = ["S", "I", "R", "E", "N", "S", ".", "A", "I"];
+const WORD = ["S", "I", "R", "E", "N", "S", "."];
 
 /** Минимум показа — чтобы успело проявиться слово; потолок ожидания загрузки. */
 const MIN_MS = 1600;
-const MAX_MS = 3500;
+const MAX_MS = 4500;
 /** Сколько идёт уход шторки вверх. */
 const LEAVE_MS = 1100;
 
 type Phase = "loading" | "leaving" | "done";
 
 /**
- * Прелоадер: пульсирующий маячок, слово SIRENS.AI побуквенно из-под маски,
- * счётчик и волосяная линия прогресса. Прогресс честный — ждёт шрифты и
- * событие load, но не дольше MAX_MS. На выходе маячок вспыхивает, экран
+ * Прелоадер: пульсирующий маячок, слово SIRENS побуквенно из-под маски,
+ * счётчик и волосяная линия прогресса. Прогресс честный — ждёт шрифты,
+ * событие load и ролик первого экрана (sirens:hero-ready из HeroScroll —
+ * иначе после открытия лампа несколько секунд не крутится), но не дольше MAX_MS. На выходе маячок вспыхивает, экран
  * уезжает вверх, на <html> ставится is-loaded — от него стартует анимация
  * первого экрана и появление текста при скролле.
  */
@@ -50,7 +51,13 @@ export default function Preloader() {
             window.addEventListener("load", () => resolve(), { once: true })
           );
     const fontsReady = document.fonts?.ready ?? Promise.resolve();
-    Promise.all([pageReady, fontsReady]).then(markLoaded, markLoaded);
+    const heroReady = (window as Window & { __sirensHeroReady?: boolean })
+      .__sirensHeroReady
+      ? Promise.resolve()
+      : new Promise<void>((resolve) =>
+          window.addEventListener("sirens:hero-ready", () => resolve(), { once: true })
+        );
+    Promise.all([pageReady, fontsReady, heroReady]).then(markLoaded, markLoaded);
     const capTimer = window.setTimeout(markLoaded, MAX_MS);
 
     const finish = () => {

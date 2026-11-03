@@ -1,3 +1,4 @@
+import ServiceLink from "@/components/ServiceLink";
 import SirenIcon from "@/components/SirenIcon";
 import { triggers } from "@/lib/content";
 
@@ -11,14 +12,17 @@ export default function Why() {
         </div>
         <p className="lede">
           Законодательство обязывает каждого работодателя организовать систему
-          управления охраной труда — независимо от численности сотрудников.
-          Базовый комплект документов нужен всем.
+          управления охраной труда&nbsp;— независимо от&nbsp;численности сотрудников.{" "}
+          <span className="lede__accent">
+            Отсутствие или&nbsp;ненадлежащее функционирование такой системы влечёт
+            для&nbsp;работодателя правовые и&nbsp;финансовые риски.
+          </span>
         </p>
       </div>
       <div className="why__grid">
         {triggers.map((t) => (
-          <a
-            href="#services"
+          <ServiceLink
+            service={t.service}
             className={`trigger trigger--w${t.col} trigger--h${t.row}`}
             key={t.n}
           >
@@ -26,11 +30,12 @@ export default function Why() {
               <SirenIcon variant={Number(t.n)} />
               <span className="trigger__arrow">↗</span>
             </div>
+            {/* Название услуги на сайт не выводим — заказчик просил убрать
+                подписи; t.service говорит лишь, какую услугу раскрыть по клику. */}
             <div className="trigger__body">
               <div className="trigger__text">{t.text}</div>
-              <div className="trigger__link">{t.link}</div>
             </div>
-          </a>
+          </ServiceLink>
         ))}
       </div>
     </section>

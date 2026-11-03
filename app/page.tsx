@@ -4,7 +4,10 @@ import Footer from "@/components/Footer";
 import GlassEffects from "@/components/GlassEffects";
 import Header from "@/components/Header";
 import HeroScroll from "@/components/HeroScroll";
+import LeadModal from "@/components/LeadModal";
+import LegalModal from "@/components/LegalModal";
 import Philosophy from "@/components/Philosophy";
+import QuizModal from "@/components/QuizModal";
 import Preloader from "@/components/Preloader";
 import Reveal from "@/components/Reveal";
 import Services from "@/components/Services";
@@ -19,13 +22,16 @@ export default function Page() {
       <Reveal />
       <Header />
       <HeroScroll />
-      <Why />
       <Services />
+      <Why />
       <Philosophy />
       <Diagnostics />
       <Team />
       <Contacts />
       <Footer />
+      <LeadModal />
+      <QuizModal />
+      <LegalModal />
     </div>
   );
 }

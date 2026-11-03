@@ -1,41 +1,82 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { applyLeader, elbowLeader } from "@/lib/leaders";
+import SirenIcon from "@/components/SirenIcon";
+import { applyLeader, silhouetteLeader } from "@/lib/leaders";
 
-type PrincipleArt = "concrete" | "clarity" | "character" | "people";
-
+/**
+ * Философия 3S: две карточки слева (Signal, System), одна справа (Safety) —
+ * так попросил заказчик 08.10.2026, карточка «Про людей» убрана. Выноски
+ * идут от каждой карточки к лампе (lib/leaders.ts).
+ */
 const PRINCIPLES: {
   n: string;
   title: string;
   text: string;
   place: string;
-  art: PrincipleArt;
+  /** номер сирены в SirenIcon (10–12 — серия «Философии») */
+  icon: number;
 }[] = [
-  { n: "01", title: "Конкретно", text: "Цифры, сроки, результаты", place: "l1", art: "concrete" },
-  { n: "02", title: "Без воды", text: "Без «синергий» и общих слов", place: "l2", art: "clarity" },
   {
-    n: "03",
-    title: "С характером",
-    text: "Критикуем статус-кво в охране труда",
-    place: "r1",
-    art: "character",
+    n: "01",
+    title: "S — Signal",
+    text: "Видим ранние сигналы риска",
+    place: "lt",
+    icon: 10,
   },
   {
-    n: "04",
-    title: "Про людей",
-    text: "Продукт, который спасает жизни",
-    place: "r2",
-    art: "people",
+    n: "02",
+    title: "S — System",
+    text: "Превращаем отдельные меры в\u00a0систему",
+    place: "lb",
+    icon: 11,
+  },
+  {
+    n: "03",
+    title: "S — Safety",
+    text: "Делаем безопасность частью бизнеса",
+    place: "right",
+    icon: 12,
   },
 ];
 
 /**
- * Центр свечения и габарит лампы внутри siren-cutout.png, в долях контейнера
- * `.siren`. Сняты с самой картинки: плафон приходится на середину по ширине и
- * на треть высоты — туда же дизайн целил расходящиеся кольца.
+ * Силуэт лампы из siren-cutout.png в долях контейнера `.siren` (его ширина —
+ * ширина корпуса, картинка шире на свечение и центрирована: см. .siren__lamp).
+ * Строки: доля высоты, левый и правый край. Снято по альфа-каналу; между
+ * строками интерполируем. Выноски упираются точно в этот контур.
  */
-const LAMP = { x: 0.496, y: 0.328, a: 0.5, b: 0.45 };
+const SILHOUETTE: [number, number, number][] = [
+  [0.024, 0.44, 0.56],
+  [0.049, 0.277, 0.723],
+  [0.073, 0.195, 0.805],
+  [0.098, 0.136, 0.859],
+  [0.122, 0.109, 0.886],
+  [0.147, 0.087, 0.907],
+  [0.171, 0.075, 0.918],
+  [0.22, 0.066, 0.929],
+  [0.269, 0.059, 0.934],
+  [0.318, 0.048, 0.941],
+  [0.367, 0.043, 0.945],
+  [0.416, 0.039, 0.952],
+  [0.464, 0.032, 0.957],
+  [0.513, 0.027, 0.961],
+  [0.538, 0.016, 0.973],
+  [0.562, 0.0, 0.989],
+  [0.831, 0.0, 0.989],
+  [0.855, 0.027, 0.961],
+  [0.88, 0.059, 0.934],
+  [0.904, 0.109, 0.886],
+];
+
+const edge = (yFrac: number, side: -1 | 1) => {
+  let i = 1;
+  while (i < SILHOUETTE.length - 1 && SILHOUETTE[i][0] < yFrac) i += 1;
+  const [y0, l0, r0] = SILHOUETTE[i - 1];
+  const [y1, l1, r1] = SILHOUETTE[i];
+  const k = Math.min(1, Math.max(0, (yFrac - y0) / (y1 - y0)));
+  return side < 0 ? l0 + (l1 - l0) * k : r0 + (r1 - r0) * k;
+};
 
 export default function Philosophy() {
   const stageRef = useRef<HTMLDivElement | null>(null);
@@ -55,12 +96,13 @@ export default function Philosophy() {
 
       const s = siren.getBoundingClientRect();
       const lamp = {
-        cx: s.left - box.left + LAMP.x * s.width,
-        cy: s.top - box.top + LAMP.y * s.height,
-        a: LAMP.a * s.width,
-        b: LAMP.b * s.height,
+        left: s.left - box.left,
+        top: s.top - box.top,
+        width: s.width,
+        height: s.height,
       };
       const stub = Math.max(26, s.width * 0.06);
+      const diag = Math.max(40, s.width * 0.1);
 
       const groups = svg.querySelectorAll<SVGGElement>("[data-leader]");
       const grads = svg.querySelectorAll("[data-leader-grad]");
@@ -73,7 +115,7 @@ export default function Philosophy() {
         applyLeader(
           g,
           grads[i],
-          elbowLeader(
+          silhouetteLeader(
             {
               left: r.left - box.left,
               top: r.top - box.top,
@@ -81,7 +123,9 @@ export default function Philosophy() {
               bottom: r.bottom - box.top,
             },
             lamp,
-            stub
+            edge,
+            stub,
+            diag
           )
         );
       });
@@ -120,15 +164,15 @@ export default function Philosophy() {
       <div className="philosophy__glow" />
       <div className="eyebrow">Философия</div>
       <div className="philosophy__title">
-        Мы слышим
+        Мы «слышим»
         <br />
         риск раньше
       </div>
       <p className="lede">
-        Помогаем увидеть и устранить риски до того, как они станут
-        происшествиями, штрафами или убытками. Строим культуру безопасности, а не
-        отчётность.
+        Помогаем увидеть и&nbsp;устранить риски до&nbsp;того, как&nbsp;они станут
+        происшествиями, штрафами или&nbsp;убытками.
       </p>
+      <div className="philosophy__subhead">Философия 3S</div>
 
       <div className="philosophy__stage" ref={stageRef}>
         <svg className="philosophy__leaders" ref={svgRef} aria-hidden="true">
@@ -168,7 +212,9 @@ export default function Philosophy() {
               style={{ ["--d" as string]: `${i * 0.09}s` }}
             >
               <div className="beacon-card__body">
-                <div className={`p-card__art p-card__art--${p.art}`} aria-hidden="true" />
+                <div className="p-card__icon">
+                  <SirenIcon variant={p.icon} />
+                </div>
                 <div className="beacon-card__title">{p.title}</div>
                 <div className="beacon-card__text">{p.text}</div>
               </div>
@@ -180,7 +226,10 @@ export default function Philosophy() {
           <div className="siren__ring siren__ring--1" />
           <div className="siren__ring siren__ring--2" />
           <div className="siren__ring siren__ring--3" />
-          <div className="siren__lamp" />
+          {/* <img>, а не background: drop-shadow у фона считается по боксу
+              и на свечении читался чёрным прямоугольником. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="siren__lamp" src="/assets/siren-cutout.png" alt="" />
         </div>
       </div>
     </section>
