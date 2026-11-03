@@ -104,43 +104,75 @@ async function hash(password: string): Promise<string> {
 
 const strip = ({ passwordHash: _, ...user }: StoredUser): User => user;
 
-// --- демо-аккаунт (только npm run dev) --------------------------------------
+// --- демо-аккаунты (npm run dev и тестовая сборка для заказчика) ----------
 
-/** Вход для визуальной доработки кабинета: в production-сборку не попадает. */
+/** Вход для визуальной доработки кабинета: в боевую сборку не попадает. */
 export const DEMO = { email: "demo@sirens.test", password: "demo2026" };
 
-/** Создаёт демо-пользователя с пройденным квизом, но без опросника — чтобы
- *  пройти путь «тест → результат» с начала. */
+/**
+ * Готовые входы. Бэкенда нет, учётные записи живут в localStorage браузера,
+ * поэтому они создаются при первом заходе на сайт в каждом браузере.
+ * Включены в dev и в тестовой сборке (NEXT_PUBLIC_DEMO=1, scripts/deploy-test.sh).
+ */
+const DEMO_ACCOUNTS: { id: string; password: string; contact: Contact }[] = [
+  {
+    id: "demo-user",
+    password: DEMO.password,
+    contact: { name: "Мария Демидова", company: "ООО «Демо-Завод»", position: "Руководитель службы ОТиПБ", phone: "+7 900 000-00-00", email: DEMO.email },
+  },
+  {
+    id: "demo-natalia",
+    password: "sirens-n01",
+    contact: { name: "Наталья", company: "SIRENS", position: "Эксперт по ОТиПБ", phone: "+7 900 000-00-01", email: "natalia@sirens.test" },
+  },
+  {
+    id: "demo-anastasia",
+    password: "sirens-a02",
+    contact: { name: "Анастасия", company: "SIRENS", position: "Эксперт по системам управления", phone: "+7 900 000-00-02", email: "anastasia@sirens.test" },
+  },
+  {
+    id: "demo-test1",
+    password: "test-0301",
+    contact: { name: "Иван Петров", company: "АО «Тест-Металл»", position: "Инженер по охране труда", phone: "+7 900 000-00-03", email: "test1@sirens.test" },
+  },
+  {
+    id: "demo-test2",
+    password: "test-0402",
+    contact: { name: "Ольга Смирнова", company: "ООО «Тест-Логистика»", position: "HR-директор", phone: "+7 900 000-00-04", email: "test2@sirens.test" },
+  },
+];
+
+const DEMO_ENABLED =
+  process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_DEMO === "1";
+
+/** Создаёт недостающих демо-пользователей с пройденным квизом, но без
+ *  опросника — чтобы пройти путь «тест → результат» с начала. */
 async function seedDemo() {
-  if (process.env.NODE_ENV !== "development") return;
+  if (!DEMO_ENABLED) return;
   // заготовленные замеры из первой версии демо — убираем, тест проходим сами
   write(KEY.tests, read<TestResult[]>(KEY.tests, []).filter((t) => !t.id.startsWith("demo-test-")));
   const users = read<StoredUser[]>(KEY.users, []);
-  if (users.some((u) => u.email === DEMO.email)) return;
+  const missing = DEMO_ACCOUNTS.filter((a) => !users.some((u) => u.email === a.contact.email));
+  if (!missing.length) return;
 
-  const contact: Contact = {
-    name: "Мария Демидова",
-    company: "ООО «Демо-Завод»",
-    position: "Руководитель службы ОТиПБ",
-    phone: "+7 900 000-00-00",
-    email: DEMO.email,
-  };
-  const user: StoredUser = {
-    ...contact,
-    id: "demo-user",
-    createdAt: "2026-09-01T09:00:00.000Z",
-    passwordHash: await hash(DEMO.password),
-  };
-  write(KEY.users, [...users, user]);
-
+  const created: StoredUser[] = [];
+  for (const a of missing) {
+    created.push({
+      ...a.contact,
+      id: a.id,
+      createdAt: "2026-09-01T09:00:00.000Z",
+      passwordHash: await hash(a.password),
+    });
+  }
+  write(KEY.users, [...users, ...created]);
   write(KEY.quiz, [
     ...read<QuizResult[]>(KEY.quiz, []),
-    {
-      id: "demo-quiz",
-      contact,
+    ...missing.map((a) => ({
+      id: `${a.id}-quiz`,
+      contact: a.contact,
       ...quizScore(Object.fromEntries(quizQuestions.map((q) => [q.code, 1]))),
       createdAt: "2026-09-01T08:40:00.000Z",
-    },
+    })),
   ]);
 }
 
