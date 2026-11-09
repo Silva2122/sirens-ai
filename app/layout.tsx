@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
 import "./globals.css";
+import { METRIKA_ON } from "@/lib/features";
 
 const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
@@ -34,10 +35,11 @@ const BOOT_SCRIPT = `(function(){var d=document.documentElement;d.classList.add(
 /**
  * Яндекс Метрика — только на боевом сайте: в разработке и на превью GitHub Pages
  * (там задан PAGES_BASE_PATH) счётчик не подключается, чтобы не портить статистику.
+ * Сейчас выключена и на боевом — см. lib/features.ts.
  */
 const METRIKA_ID = 114023021;
 const METRIKA_ENABLED =
-  process.env.NODE_ENV === "production" && !process.env.PAGES_BASE_PATH;
+  METRIKA_ON && process.env.NODE_ENV === "production" && !process.env.PAGES_BASE_PATH;
 const METRIKA_SCRIPT = `(function(m,e,t,r,i,k,a){
     m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
     m[i].l=1*new Date();

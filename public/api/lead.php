@@ -14,6 +14,8 @@ header('Cache-Control: no-store');
 
 const RECIPIENTS = ['SirensLLC@yandex.ru', 'info@sirens-hse.ru'];
 const FROM = 'noreply@sirens-hse.ru';
+/** Редакция текстов согласий на сайте (lib/legal.ts) — менять вместе с ними. */
+const CONSENT_EDITION = 'от 06.11.2026';
 
 function fail(int $code, string $msg): never {
   http_response_code($code);
@@ -59,10 +61,13 @@ $lines = [
   'Имя:      ' . ($name !== '' ? $name : '—'),
   'Телефон:  ' . $phone,
   'Почта:    ' . ($email !== '' ? $email : '—'),
-  'Рассылка: ' . ($marketing ? 'согласен' : 'нет'),
   '',
-  'Время:    ' . date('d.m.Y H:i') . ' (сервер)',
-  'Страница: ' . ($_SERVER['HTTP_REFERER'] ?? '—'),
+  // Фиксация согласия (ТЗ 152-ФЗ): доказательство для проверки РКН.
+  'Отправлено:               ' . (new DateTimeImmutable('now', new DateTimeZone('Europe/Moscow')))->format('d.m.Y H:i:s') . ' (МСК)',
+  'Согласие на обработку ПД: да',
+  'Согласие на рассылки:     ' . ($marketing ? 'да' : 'нет'),
+  'Редакция согласия:        ' . CONSENT_EDITION,
+  'Страница отправки:        ' . mb_substr((string)($_SERVER['HTTP_REFERER'] ?? '—'), 0, 300),
 ];
 
 $encode = static fn(string $s): string => '=?UTF-8?B?' . base64_encode($s) . '?=';

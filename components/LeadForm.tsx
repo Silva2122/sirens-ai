@@ -5,8 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 /**
  * Форма заявки. Одна и та же в подвале («Контакты») и в попапе по кнопкам
- * «Оставить заявку» — правится в одном месте. Отправка пока локальная:
- * способ доставки (почта/CRM) не выбран, см. CLAUDE.md.
+ * «Оставить заявку» — правится в одном месте. Отправка — public/api/lead.php.
  */
 /**
  * Маска телефона «+7 (999) 123-45-67». Берём только цифры; если первая —
@@ -57,7 +56,10 @@ const LEAD_ENDPOINT = "/api/lead.php";
  *  поэтому заявка никуда не уходит, а форма просто показывает «отправлено». */
 const DEMO = process.env.NEXT_PUBLIC_DEMO === "1";
 
-type Status = "idle" | "sending" | "sent" | "error";
+/** Подсказка, если пытаются отправить без согласия (ТЗ 152-ФЗ). */
+const CONSENT_HINT = "Для отправки заявки нужно согласие на обработку персональных данных";
+
+type Status = "idle" | "sending" | "sent" | "error" | "consent";
 
 export default function LeadForm({
   autoFocus = false,
@@ -89,8 +91,10 @@ export default function LeadForm({
         ),
         headers: { Accept: "application/json" },
       });
-      const data = (await res.json().catch(() => null)) as { ok?: boolean } | null;
-      setStatus(res.ok && data?.ok ? "sent" : "error");
+      const data = (await res.json().catch(() => null)) as
+        | { ok?: boolean; error?: string }
+        | null;
+      setStatus(res.ok && data?.ok ? "sent" : data?.error === "consent" ? "consent" : "error");
     } catch {
       setStatus("error");
     }
@@ -159,12 +163,21 @@ export default function LeadForm({
         />
       </label>
       <label className="consent">
-        <input type="checkbox" name="consent" required />
+        {/* Обязательная галочка, по умолчанию пустая; autoComplete="off" —
+            чтобы браузер не восстанавливал отметку при возврате на страницу. */}
+        <input
+          type="checkbox"
+          name="consent"
+          required
+          autoComplete="off"
+          onInvalid={(e) => e.currentTarget.setCustomValidity(CONSENT_HINT)}
+          onChange={(e) => e.currentTarget.setCustomValidity("")}
+        />
         <span>
-          Даю <LegalLink doc="consent" className="consent__link">
+          Даю <LegalLink doc="consent" newTab className="consent__link">
             согласие на&nbsp;обработку персональных данных
           </LegalLink>{" "}
-          в&nbsp;соответствии с&nbsp;<LegalLink doc="privacy" className="consent__link">
+          в&nbsp;соответствии с&nbsp;<LegalLink doc="privacy" newTab className="consent__link">
             Политикой
           </LegalLink>
         </span>
@@ -172,9 +185,9 @@ export default function LeadForm({
       {/* Отдельная галочка: согласие на рекламу нельзя зашивать
           в согласие на обработку персональных данных. */}
       <label className="consent consent--optional">
-        <input type="checkbox" name="marketing" />
+        <input type="checkbox" name="marketing" autoComplete="off" />
         <span>
-          Даю <LegalLink doc="mailing" className="consent__link">
+          Даю <LegalLink doc="mailing" newTab className="consent__link">
             согласие на&nbsp;получение рекламных рассылок
           </LegalLink>{" "}
           и&nbsp;новостей SIRENS
@@ -193,6 +206,11 @@ export default function LeadForm({
         {sent ? "Заявка отправлена" : status === "sending" ? "Отправляем…" : "Отправить"}
         <span className="submit__arrow">↗</span>
       </button>
+      {status === "consent" && (
+        <p className="form__error" role="alert">
+          {CONSENT_HINT}
+        </p>
+      )}
       {status === "error" && (
         <p className="form__error" role="alert">
           Не&nbsp;получилось отправить. Напишите нам на 

@@ -8,6 +8,7 @@ import LeadModal from "@/components/LeadModal";
 import LegalModal from "@/components/LegalModal";
 import Philosophy from "@/components/Philosophy";
 import QuizModal from "@/components/QuizModal";
+import { CABINET_ENABLED } from "@/lib/features";
 import Preloader from "@/components/Preloader";
 import Reveal from "@/components/Reveal";
 import Services from "@/components/Services";
@@ -30,7 +31,7 @@ export default function Page() {
       <Contacts />
       <Footer />
       <LeadModal />
-      <QuizModal />
+      {CABINET_ENABLED && <QuizModal />}
       <LegalModal />
     </div>
   );
