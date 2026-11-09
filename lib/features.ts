@@ -6,11 +6,11 @@
  * их нет: бэкенда нет, а квиз собирает компанию и должность, которых нет
  * в согласии на обработку ПД. Кнопка диагностики там ведёт к форме заявки.
  *
- * Яндекс Метрика выключена, пока политика обещает «без аналитики» (ТЗ 152-ФЗ
- * от 06.11.2026): включать вместе с cookie-баннером и правкой раздела IV
- * Политики — NEXT_PUBLIC_METRIKA=1.
+ * Яндекс Метрика включена на боевом по просьбе заказчика (09.11.2026).
+ * Политика пока обещает «без аналитики» — раздел IV заказчик дописывает сам.
+ * Выключить: NEXT_PUBLIC_METRIKA=0.
  */
 export const CABINET_ENABLED =
   process.env.NODE_ENV === "development" || process.env.NEXT_PUBLIC_DEMO === "1";
 
-export const METRIKA_ON = process.env.NEXT_PUBLIC_METRIKA === "1";
+export const METRIKA_ON = process.env.NEXT_PUBLIC_METRIKA !== "0";

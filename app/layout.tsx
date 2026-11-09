@@ -35,7 +35,7 @@ const BOOT_SCRIPT = `(function(){var d=document.documentElement;d.classList.add(
 /**
  * Яндекс Метрика — только на боевом сайте: в разработке и на превью GitHub Pages
  * (там задан PAGES_BASE_PATH) счётчик не подключается, чтобы не портить статистику.
- * Сейчас выключена и на боевом — см. lib/features.ts.
+ * Выключатель — lib/features.ts.
  */
 const METRIKA_ID = 114023021;
 const METRIKA_ENABLED =
